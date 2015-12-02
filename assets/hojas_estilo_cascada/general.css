@@ -30,9 +30,8 @@ footer{
             padding: 5%; }
 .btn_{float: left;}
 .icon-user{font-size: 5em;color:rgba(0,113,185,1);}
-.panel-heading> h4{color:gray;}
 .navbar-default .navbar-brand {
-    color:rgba(0,182,95,1);}
+    color:rgba(0,0,0,1);}
 .dropdown-menu>li>a:hover{
     color: rgba(0,182,95,1);   
 }
@@ -108,3 +107,11 @@ a.DTTT_button.ui-button.DTTT_button_xls{-moz-background:white;}
   padding: 0%; color: gray; 
     font-weight: bold;     font-size: 1em;}
 li{text-decoration:none;}
+.panel-danger > .panel-heading {
+  color: white;
+  background:rgba(0,113,185,1);  
+}
+.panel-default > .panel-heading {
+  color: white;
+  background:rgba(0,182,95,1);  
+}

@@ -28,16 +28,14 @@ echo $header;
                 </div>      
             </div>
         </div>
-
         <div class="col-md-8">        
             <div class="col-md-12 seccion_estudiante" >
-                <p class="error_servidor col-md-"><?php echo $message; ?></p>
+                <div class="col-md-"><?php echo $message; ?></div>
                 <div class="panel panel-default ">                    
-                    <div id="" class="panel-heading text-left">
-                        <h4 class="text-center text-success" style="font-size: 1.5em;">Mis cursos</h4>
+                    <div id="" class="panel-heading">
+                        <h4 class="" >Mis cursos</h4>
                     </div>
                     <div class="panel-body">
-
                         <div id="mis_cursos" class="col-md-12">
                             <?php
                             if ($mis_cursos != null) {
@@ -56,13 +54,12 @@ echo $header;
                             <?php } ?>
                         </div>
                     </div>
-
                 </div>  
             </div>   <!-- fin de seccion estudiante-->
             <div class="col-md-10 seccion_avance" >
                 <div class="panel panel-default ">
-                    <div id="" class="panel-heading text-left ">
-                        <h5 class="text-success">Avance por curso </h5>
+                    <div id="" class="panel-heading">
+                        <h5 class="">Avance por curso </h5>
                     </div>
                     <div class="panel-body">
                         <input id='id' type="hidden" value="<?= $this->session->userdata('user_id'); ?>">
@@ -72,11 +69,10 @@ echo $header;
                 </div>  
             </div> 
         </div>
-
         <div class="col-md-2"> 
             <div class="panel panel-danger">
-                <div class="panel-heading text-primary">           
-                    <h5 class="col-md- ">Resumen de mi actividad</h5>  
+                <div class="panel-heading">           
+                    <h5 class=" ">Resumen de mi actividad</h5>  
                 </div>
                 <div class="panel-body">
                 </div>

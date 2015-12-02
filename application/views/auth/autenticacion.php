@@ -5,7 +5,7 @@ echo $header;
 <section class='cuerpo '> 
     <div class="col-md-4 " style="border-radius: 5%;margin:  1%;background: rgba(0,0,0,0);">
         <br>
-        <div class="col-md-12 text-blanco alert alert-warning    alert-dismissible text-justify h3">                      
+        <div class="col-md-12 text-blanco text-justify h3">                      
             <p style="line-height: 1.5em;">
                 <br>
                 <i class="glyphicon glyphicon-info-sign "></i>&nbsp;

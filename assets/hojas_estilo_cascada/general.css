@@ -1,0 +1,110 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22/11/2015, 07:02:22 PM
+    Author     : chz
+*/
+*{}
+html,body{height: 100%;  width: 100%;}
+body{
+    background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,1), rgba(0,0,0,.9), rgba(0,0,0,.7)) no-repeat center center fixed;    
+}
+header{height:10%;position:relative;color:white;
+       background: linear-gradient( to right, rgba(0,113,185,1), rgba(0,113,185,1)); 
+}
+.cuerpo{height:85%;margin-top:0%;        
+
+}
+footer{   
+    height:4%;     
+    background: linear-gradient( to right, rgba(0,113,185,1), rgba(0,113,185,.9)); 
+    color:white;
+    position: fixed;
+    bottom: 0%;   width: 100%;      
+}
+.text-icon{font-size: .5em;margin: 0%;}
+.text-blanco{color:rgba(0,0,0,.6);font-weight: bold;
+            padding: 5%; }
+.btn_{float: left;}
+.icon-user{font-size: 5em;color:rgba(0,113,185,1);}
+.panel-heading> h4{color:gray;}
+.navbar-default .navbar-brand {
+    color:rgba(0,182,95,1);}
+.dropdown-menu>li>a:hover{
+    color: rgba(0,182,95,1);   
+}
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: white;transform: scaleY(1.1);
+    background-color: rgba(0,113,185,1);
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: white;
+    background-color: rgba(0,113,185,1);
+}
+.nav>li>a:focus, .nav>li>a:hover {
+  color:rgba(0,113,185,1);
+}
+#icono_autenticacion{transform: skewX(-5deg) skewY(2deg) scale(2.5);  
+          margin-top:1.7%;margin-left: 3%; 
+          background: linear-gradient(rgba(0,113,185,1),rgba(0,0,0,.3)); /* Standard syntax */
+}
+#h5_sistema{transform: skewX(-5deg) skewY(-2deg) scale(1); 
+    background: linear-gradient(rgba(0,113,185,1), rgba(0,0,0,.3));
+}
+#autenticar,#recuperar{margin-top: 2%;}
+.alert-warning{color:white;
+   background: linear-gradient(rgba(0,113,185,1),rgba(0,113,185,1),rgba(0,113,185,.7));
+}
+
+.float_derecha{float: right;}
+:required:valid, .required:focus:valid {
+    background: url(../imagenes/success.png) no-repeat;
+    background-position: 90%; border:0.1em solid rgba(0,182,95,1);
+}
+:required:invalid, .required:focus:invalid {
+    background: url(../imagenes/alert2.png) no-repeat;
+    background-position:90%;   border:0.1em solid rgba(215, 161, 44, 0.9);
+}
+input{margin-top: 0%;margin-bottom: 1%;}
+.icon_form{transform:scale(3);color:rgba(0,113,185,1);margin-top:1%;}
+#tabla_usuarios_previous{margin-right: 0%;}
+#tabla_usuarios{margin-top: 0%;}
+#tabla_usuarios_length{margin-bottom: 1%;}
+#tabla_usuarios_filter{float: left;}
+#tabla_usuarios_filter>label>input{width: 70%;background: url(../imagenes/magnifier.png) no-repeat right;}
+.search_clear{margin-left: 50%;}
+.flexigrid div.fbutton span.export {
+padding: 15%;}
+.flexigrid div.fbutton span.print {
+   padding: 15%;
+}
+a.DTTT_button.ui-button.DTTT_button_print{display: none;width: 0%;height: 0%;}
+a.DTTT_button.ui-button.DTTT_button_xls{-moz-background:white;}
+.dataTables_filter>label{float: left;}
+.dataTables_filter>label>input{background: url(../imagenes/magnifier.png) no-repeat right}
+#DataTables_Table_0_filter{float: left;}
+#DataTables_Table_0_filter>label>input{background: url(../imagenes/magnifier.png) no-repeat right;}
+.dataTables_paginate>a:hover{
+    background: rgba(0,113,185,.7);color:white;transform: scaleY(1.2);
+}
+.dataTables_paginate>span>a:hover{
+    background: rgba(0,113,185,.7);color:white;transform: scale(1.2);
+}
+.form-control::-webkit-input-placeholder {
+    padding: 0%; color: gray; 
+    font-weight: bold;     font-size: 1em; opacity: 1 !important;; 
+}
+.form-control::-moz-placeholder { /* Firefox 18- */
+  padding: 0%; color: gray; 
+    font-weight: bold;     font-size: 1em;}
+
+.form-control::-moz-placeholder {  /* Firefox 19+ */
+  padding: 0%; color: gray; 
+    font-weight: bold;     font-size: 1em;}
+:-ms-input-placeholder {  
+  padding: 0%; color: gray; 
+    font-weight: bold;     font-size: 1em;}
+li{text-decoration:none;}

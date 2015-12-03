@@ -53,7 +53,7 @@ footer{
 #h5_sistema{transform: skewX(-5deg) skewY(-2deg) scale(1); 
     background: linear-gradient(rgba(0,113,185,1), rgba(0,0,0,.3));
 }
-#autenticar,#recuperar{margin-top: 2%;}
+#autenticar,#recuperar{margin-top: 6%;}
 .alert-warning{color:white;
    background: linear-gradient(rgba(0,113,185,1),rgba(0,113,185,1),rgba(0,113,185,.7));
 }
@@ -113,5 +113,6 @@ li{text-decoration:none;}
 }
 .panel-default > .panel-heading {
   color: white;
-  background:rgba(0,182,95,1);  
+  background:rgba(0,0,0,.7);  
 }
+.icon_left{float: left;}

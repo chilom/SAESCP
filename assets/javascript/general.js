@@ -26,6 +26,18 @@ $(document).ready(function () {
             }
         }
     });
-        
+
+    $('#ocultar_informacion').on('click', function () {
+        $('#informacion').toggle();
+        $(this).html('');
+        $(this).html('Ver información').attr('id', 'ver_info');
+    });
+    $('#ver_info').on('click', function () {
+        $('#informacion').show();
+        $(this).html('');
+        $(this).html('Ocultar información').attr('id', 'ocultar_informacion');
+    });
+
+
 
 }); //-----------------fin document ready()----------------------------------------------------------

@@ -2,40 +2,44 @@
 echo $header_html;
 echo $header;
 ?>
-<section class='cuerpo '> 
-    <div class="col-md-4 " style="border-radius: 5%;margin:  1%;background: rgba(0,0,0,0);">
-        <br>
-        <div class="col-md-12 text-blanco text-justify h3">                      
-            <p style="line-height: 1.5em;">
-                <br>
-                <i class="glyphicon glyphicon-info-sign "></i>&nbsp;
-                Herramienta de apoyo para la evaluación de saberes, pertenecientes a cursos afines a la programación informática.<br>
-                Los cursos disponibles son presenciales e impartidos  en la F.E.I.  
+<section class='cuerpo '>        
+    <div class=" text-blanco text-justify h3 jumbotron col-md-5">                      
+        <div style="line-height: 1.5em;" class="" >
+            <i class="glyphicon glyphicon-info-sign icon_form float-left"></i>  
+
             <hr>
-            </p>
-            <div class="col-md-2"></div>
-            <ul class="nav nav-pills nav-stacked col-md-8">
-                <li class=" " >
-                    <a href="<?php echo base_url() . 'auth/muestra_pantalla_registrar'; ?>" class="btn btn-primary">
-                        <i class="glyphicon glyphicon-save  glyphicon glyphicon-user btn_">                        
-                        </i>
-                        Registrarme
-                    </a>
-                </li>
-                <br>
-                <li class="">
-                    <a href="<?php echo base_url() . 'auth/muestra_pantalla_recuperar'; ?>" class="btn btn-primary ">
-                        <i class="glyphicon glyphicon-envelope glyphicon glyphicon-envelope btn_ ">                       
-                        </i>
-                        Recuperar cuenta
-                    </a>
-                </li>                   
-            </ul> 
+            <p id="informacion" class="col-md-">
+                Herramienta de apoyo para la evaluación de saberes, pertenecientes a cursos afines a la programación informática.
+                Los cursos disponibles son presenciales e impartidos  en la F.E.I.         
+            </p> 
+            <span class="btn btn-primary float-right" id="ocultar_informacion">
+                Ocultar información
+            </span> 
         </div>
+        <div class="col-md-6">
+        </div>
+
+        <ul class="nav nav-stacked col-md-6">
+            <li class=" btn btn-default " >
+                <a href="<?php echo base_url() . 'auth/muestra_pantalla_registrar'; ?>" >
+                    <i class=" glyphicon glyphicon-save icon_left">                        
+                    </i>
+                    Registrarme
+                </a>
+            </li>
+            <li class=" btn btn-default" >
+                <a href="<?php echo base_url() . 'auth/muestra_pantalla_recuperar'; ?>" class="">
+                    <i class=" glyphicon glyphicon-envelope icon_left">                       
+                    </i>
+                    Recuperar cuenta
+                </a>
+            </li>                   
+        </ul>     
     </div>
+
     <div class="col-md-1"></div>
+
     <div class="col-md-4 panel_auth" id="autenticar">
-        <br>
         <div id="error_expir"><?php echo $message; ?> </div> 
         <div class="panel panel-default  ">
             <div class="panel-heading">    
@@ -66,6 +70,5 @@ echo $header;
             <div class="panel-footer"></div>
         </div>
     </div>
-    <div class="col-md-2"></div>
     <?php echo $footer; ?>
     

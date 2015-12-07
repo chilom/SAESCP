@@ -6,6 +6,7 @@ echo $header;
     <?php echo $menu; ?>
     <div class="col-md-3"></div>
     <div class="col-md-6"><?php echo $message; ?> </div> 
+     <div class="col-md-3"></div>
 
     <section  class="col-md-12" >
         <div class="panel panel-default text-justify "  >
@@ -17,7 +18,7 @@ echo $header;
                     <i class="glyphicon glyphicon-plus-sign float_derecha" style=""></i>
                 </h4>   
             </div>
-            <div class="panel-body" style="overflow: auto;  " >
+            <div class="panel-body  " >
                 <a href="auth/muestra_pantalla_registrar" class="btn btn-success text-left" style="float: right;"> 
                     Nuevo 
                 </a>
@@ -46,10 +47,10 @@ echo $header;
                             </tr>
                         <?php endforeach; ?></tbody>
                 </table>  
-
             </div>
             <div class="panel-footer"></div>
         </div>
+         <hr> 
     </section>
     <?php echo $footer; ?>
 

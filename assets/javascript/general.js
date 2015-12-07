@@ -27,15 +27,18 @@ $(document).ready(function () {
         }
     });
 
-    $('#ocultar_informacion').on('click', function () {
+    $('#ver_informacion').toggle();
+
+    $('#ocultar_informacion').on('mouseover', function () {
         $('#informacion').toggle();
-        $(this).html('');
-        $(this).html('Ver información').attr('id', 'ver_info');
+        $('#ver_informacion').show();
+
+        $(this).toggle();
     });
-    $('#ver_info').on('click', function () {
+    $('#ver_informacion').on('mouseover', function () {
         $('#informacion').show();
-        $(this).html('');
-        $(this).html('Ocultar información').attr('id', 'ocultar_informacion');
+        $(this).toggle();
+        $('#ocultar_informacion').show();
     });
 
 

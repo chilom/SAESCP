@@ -12,9 +12,11 @@ html,body{height: 100%;  width: 100%;}
 body{
     background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,1), rgba(0,0,0,.9), rgba(0,0,0,.7)) no-repeat center center fixed;    
 }
-header{height:10%;position:relative;color:white;
-       background: linear-gradient( to right, rgba(0,113,185,1), rgba(0,113,185,1)); 
+header{height:10%;
+       position:relative;color:white;margin-top: 0%;padding-bottom:7%;
+      background: linear-gradient( to right, rgba(0,113,185,1), rgba(0,113,185,1)); 
 }
+header small{color: rgba(0,0,0,.4);}
 .cuerpo{height:85%;margin-top:0%;        
 
 }
@@ -37,21 +39,21 @@ footer{
 }
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
     color: white;transform: scaleY(1.1);
-    background-color: rgba(0,113,185,1);
+    background-color: rgba(0,182,95,1);
 }
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
     color: white;
-    background-color: rgba(0,113,185,1);
+    background-color: rgba(0,182,95,1);
 }
 .nav>li>a:focus, .nav>li>a:hover {
   color:rgba(0,113,185,1);
 }
-#icono_autenticacion{transform: skewX(-5deg) skewY(2deg) scale(2.5);  
-          margin-top:1.7%;margin-left: 3%; 
-          background: linear-gradient(rgba(0,113,185,1),rgba(0,0,0,.3)); /* Standard syntax */
+#icono_autenticacion{//transform: scale(2.5) skewY(2deg) ;   //skewX(-5deg)
+          transform: scale(2.5) ;
+         // background: linear-gradient(rgba(0,113,185,1),rgba(0,0,0,.3)); /* Standard syntax */
 }
-#h5_sistema{transform: skewX(-5deg) skewY(-2deg) scale(1); 
-    background: linear-gradient(rgba(0,113,185,1), rgba(0,0,0,.3));
+#h5_sistema{//transform: skewX(-5deg) skewY(-2deg) scale(1); 
+    //background: linear-gradient(rgba(0,113,185,1), rgba(0,0,0,.3));
 }
 #autenticar,#recuperar{margin-top: 6%;}
 .alert-warning{color:white;
@@ -68,7 +70,10 @@ footer{
     background-position:90%;   border:0.1em solid rgba(215, 161, 44, 0.9);
 }
 input{margin-top: 0%;margin-bottom: 1%;}
-.icon_form{transform:scale(3);color:rgba(0,113,185,1);margin-top:1%;}
+.icon_form{transform:scale(1.1) skewX(-5deg) skewY(-2deg);color:rgba(0,182,95,1);margin-top:1%;margin-left: 20%;  
+//          box-shadow: .1em .1em .1em 0em rgba(255,255,255,1);
+          overflow: hidden;
+}
 #tabla_usuarios_previous{margin-right: 0%;}
 #tabla_usuarios{margin-top: 0%;}
 #tabla_usuarios_length{margin-bottom: 1%;}
@@ -112,7 +117,12 @@ li{text-decoration:none;}
   background:rgba(0,113,185,1);  
 }
 .panel-default > .panel-heading {
-  color: white;
+  color: white;border:rgba(0,0,0,.7);
   background:rgba(0,0,0,.7);  
 }
 .icon_left{float: left;}
+.nav-pills>li>a {color:white;background: rgba(0,113,185,1);}
+.navbar-default{background:rgba(0,113,185,1);}
+.navbar-default .navbar-nav>li>a {color:white;}
+.jumbotron{}
+#btn_informacion:hover{transform: scale(4);}

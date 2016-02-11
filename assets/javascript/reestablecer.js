@@ -1,5 +1,5 @@
 $(document).ready(function(){
-        $('.alert-success').delay(4000).fadeOut(1500);
+   $('.alert-success').delay(4000).fadeOut(1500);
    $('#new_confirm').on('change',function(){ check_password(this);});
 
 });

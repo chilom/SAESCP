@@ -1,7 +1,6 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Auth extends CI_Controller {
 
     private $nombre_clave = null;
@@ -172,54 +171,47 @@ class Auth extends CI_Controller {
         } else {
             $this->form_validation->set_rules('email', $this->lang->line('forgot_password_validation_email_label'), 'required|valid_email');
         }
-
-
         if ($this->form_validation->run() == false) {
             // setup the input
             $this->data['email'] = array('name' => 'email',
                 'id' => 'email',
             );
-
             if ($this->config->item('identity', 'ion_auth') != 'email') {
                 $this->data['identity_label'] = $this->lang->line('forgot_password_identity_label');
             } else {
                 $this->data['identity_label'] = $this->lang->line('forgot_password_email_identity_label');
             }
-
             // set any errors and display the form
             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
             $title['title'] = "Recuperar datos de acceso";
             $this->data['header_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-            $this->data['header'] = $this->load->view('pagina/encabezado_pagina', '', true);
-            $this->data['menu'] = $this->load->view('pagina/menu', '', true);
+            $menu['menu'] = $this->load->view('pagina/menu', '', true);
+            $this->data['header'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
             $this->data['footer'] = $this->load->view('pagina/pie_pagina', '', true);
-            $this->_render_page('auth/recuperar', $this->data);
+            $this->load->view('auth/recuperar', $this->data);
         } else {
-            $identity_column = $this->config->item('identity', 'ion_auth');
-            $identity = $this->ion_auth->where($identity_column, $this->input->post('email'))->users()->row();
-
+            $identity_column = $this->config->item('identity ', 'ion_auth');
+            $identity = $this->ion_auth->where($identity_column, $this->input->post(' email'))->users()->row();
             if (empty($identity)) {
-
-                if ($this->config->item('identity', 'ion_auth') != 'email') {
+                if ($this->config->item('identity ', 'ion_auth') != 'email') {
                     $this->ion_auth->set_error('forgot_password_identity_not_found');
                 } else {
                     $this->ion_auth->set_error('forgot_password_email_not_found');
                 }
-
-                $this->session->set_flashdata('message', $this->ion_auth->errors());
-                redirect("auth/forgot_password", 'refresh');
+                $this->session->set_flashdata('message ', $this->ion_auth->errors());
+                redirect("auth/forgot_password", ' refresh');
             }
-
             // run the forgotten password method to email an activation code to the user
-            $forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity', 'ion_auth')});
-
+            $forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity ', 'ion_auth')});
             if ($forgotten) {
                 // if there were no errors
-                $this->session->set_flashdata('message', $this->ion_auth->messages());
-                redirect("auth/busca_usuario", 'refresh'); //we should display a confirmation page here instead of the login page
+                $this->session->set_flashdata('message ', $this->ion_auth->messages());
+                redirect("auth/busca_usuario", ' refresh'); //we should display a confirmation page here instead of the login page
             } else {
-                $this->session->set_flashdata('message', $this->ion_auth->errors());
-                redirect("auth/forgot_password", 'refresh');
+                $this->session->set_flashdata('message ', $this->ion_auth->errors());
+                redirect("auth/forgot_password", ' refresh
+
+            ');
             }
         }
     }
@@ -229,29 +221,25 @@ class Auth extends CI_Controller {
         if (!$code) {
             show_404();
         }
-
         $user = $this->ion_auth->forgotten_password_check($code);
-
         if ($user) {
             // if the code is valid then display the password reset form
-
-            $this->form_validation->set_rules('new', 'nueva contraseña', 'required|min_length[8]|max_length[30]|matches[new_confirm]');
-            $this->form_validation->set_rules('new_confirm', 'confirmar nueva contraseña', 'required|min_length[8]|max_length[30]');
-
+            $this->form_validation->set_rules('new', 'nueva contraseña  ', 'required|min_length[9]|max_length[30]|matches[new_confirm]');
+            $this->form_validation->set_rules('new_confirm ', 'confirmar nueva contraseña ', 'required|min_length[9]|max_length[30]');
             if ($this->form_validation->run() == false) {
                 // display the form
                 // set the flash data error message if there is one
                 $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-
                 $this->data['min_password_length'] = $this->config->item('min_password_length', 'ion_auth');
                 $this->data['new_password'] = array(
                     'name' => 'new',
                     'id' => 'new',
                     'placeholder' => 'Nueva contraseña',
                     'type' => 'password',
+                    'required' => 'true',
                     'class' => 'form-control ',
-                    'title' => '8 a 30 caracteres. Ejemplo: ********', //añadido
-                    'pattern' => ".{8,30}"
+                    'title' => 'Ejemplo: ********. (9 a 30 caracteres).', //añadido
+                    'pattern' => ".{9,30}"
                 );
                 $this->data['new_password_confirm'] = array(
                     'name' => 'new_confirm',
@@ -259,8 +247,9 @@ class Auth extends CI_Controller {
                     'placeholder' => 'Confirmar nueva contraseña',
                     'type' => 'password',
                     'class' => 'form-control',
-                    'title' => '8 a 30 caracteres. Ejemplo: ********', //añadido
-                    'pattern' => ".{8,30}"
+                    'required' => 'true',
+                    'title' => 'Ejemplo: ********. (9 a 30 caracteres).', //añadido
+                    'pattern' => ".{9,30}"
                 );
                 $this->data['user_id'] = array(
                     'name' => 'user_id',
@@ -281,17 +270,13 @@ class Auth extends CI_Controller {
             } else {
                 // do we have a valid request?$this->_valid_csrf_nonce() === FALSE || 
                 if ($user->id != $this->input->post('user_id')) {
-
                     // something fishy might be up
                     $this->ion_auth->clear_forgotten_password_code($code);
-
                     show_error($this->lang->line('error_csrf'));
                 } else {
                     // finally change the password
                     $identity = $user->{$this->config->item('identity', 'ion_auth')};
-
                     $change = $this->ion_auth->reset_password($identity, $this->input->post('new'));
-
                     if ($change) {
                         // if the password was successfully changed
                         $this->session->set_flashdata('message', $this->ion_auth->messages());
@@ -299,7 +284,7 @@ class Auth extends CI_Controller {
                     } else {
                         $this->session->set_flashdata('message', $this->ion_auth->errors());
                         //redirect('auth/reset_password/' . $code, 'refresh');
-                        $this->reset_password();
+                        $this->valida_entradas_recuperar_datos();
                     }
                 }
             }
@@ -712,31 +697,34 @@ class Auth extends CI_Controller {
     }
 
 //################################################################################################################
-//#################### Metodos agregados ############################
+//####################
+    //  Metodos agregados ############################
 
     public function muestra_pantalla_autenticacion() {
         // set the flash data error message if there is one
         $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
         $this->data['identity'] = array(
             'name' => 'identity', 'id' => 'identity', 'type' => 'text',
-            'value' => $this->form_validation->set_value('identity'),
-            'placeholder' => 'Usuario o matrícula', //añadido
-            'class' => 'text-center form-control', //añadido
+            //'value' => $this->form_validation->set_value('identity'),
+            'placeholder' => 'Usuario', //añadido
+            'class' => 'text-justified form-control', //añadido
             'required' => 'true', //añadido
             'autofocus' => 'true',
-            'pattern' => ".{8,30}", 'title' => "8 a 30 caracteres. Ejemplo: maestro de algoritmos o so9011559 "
+            'pattern' => ".{9,30}", 'title' => "Ejemplo: maestro de algoritmos o so9011559. (9 a 30 caracteres)"
         );
         $this->data['password'] = array(
             'name' => 'password', 'id' => 'password', 'type' => 'password',
             'placeholder' => 'Contraseña', //añadido
-            'class' => 'text-center form-control', //añadido
+            //'value' => $this->form_validation->set_value('password'),
+            'class' => 'text-justified form-control', //añadido
             'required' => 'true', //añadido,
             'autofocus' => 'true',
-            'pattern' => ".{8,30}", 'title' => "8 a 30 caracteres. Ejemplo: ******** "
+            'pattern' => ".{9,30}", 'title' => "Ejemplo: ******** . (9 a 30 caracteres) "
         );
-        $title['title'] = 'SApESCuP: Inicio de sesion';
+        $title['title'] = 'SAESC P: Inicio de sesión';
         $this->data['header_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-        $this->data['header'] = $this->load->view('pagina/encabezado_pagina', '', true);
+        $menu['menu'] = $this->load->view('pagina/menu_autenticacion', '', true);
+        $this->data['header'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
         $this->data['footer'] = $this->load->view('pagina/pie_pagina', '', true);
         //renderizacion de  la pagina autenticacion
         $this->_render_page('auth/autenticacion', $this->data);
@@ -760,38 +748,85 @@ class Auth extends CI_Controller {
         }
     }
 
+    public function verifica_campos_completos($datos) {
+        if (!empty($datos['identity']) && !empty($datos['password'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function busca_usuario() {
-        $this->load->model('sesion_model');
         $nombre_clave = $this->ingresa_nombre_clave();
-        $this->form_validation->set_rules('identity', 'Usuario', 'required');
-        $this->form_validation->set_rules('password', 'Contraseña', 'required');
-        $this->form_validation->set_message('required', '%s es un campo requerido');
-        if ($this->form_validation->run() == true) {
-            // check to see if the user is logging in
-            if ($this->ion_auth->login($nombre_clave['identity'], $nombre_clave['password'], $nombre_clave['remember'])) {
-                //if the login is successful
-                //redirect them back to the home page. Despliegue de pantalla administrador, maestro o estudiante
-                if ($this->ion_auth->in_group('estudiante')) {
-                    $datos['users_id'] = $this->session->userdata('user_id');
-                    // $datos['sesion_id'] = $_GET['session_id'];
-                    $datos['inicio'] = date('Y-m-d H:i:s');
-                    $this->sesion_model->registra_informacion_inicio_sesion($datos);
+        if ($this->verifica_campos_completos($nombre_clave) == true) {
+            $this->form_validation->set_rules('identity', 'Usuario', 'required|min_length[9]|max_length[30]');
+            $this->form_validation->set_rules('password', 'Contraseña', 'required|min_length[9]|max_length[30]');
+            $this->form_validation->set_message('required', '%s es un campo requerido');
+            if ($this->form_validation->run() == true) {
+                if ($this->ion_auth->login($nombre_clave['identity'], $nombre_clave['password'], $nombre_clave['remember'])) {
+                    //if the login is successful
+                    //redirect them back to the home page. Despliegue de pantalla administrador, maestro o estudiante
+                    if ($this->ion_auth->in_group('estudiante')) {
+                        $datos['users_id'] = $this->session->userdata('user_id');
+                        // $datos['sesion_id'] = $_GET['session_id'];
+                        $datos['inicio'] = date('Y-m-d H: i: s');
+                        $this->sesion_model->registra_informacion_inicio_sesion($datos);
+                    }
+                    $this->session->set_flashdata('message', $this->ion_auth->messages());
+                    redirect('/', 'refresh');
+                } else {
+                    // if the login was un-successful
+                    // redirect them back to the login page
+                    $this->session->set_flashdata('message', (validation_errors()) ? validation_errors() : $this->ion_auth->errors());
+                    $this->muestra_pantalla_autenticacion();
+
+                    //redirect('auth/muestra_pantalla_autenticacion', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
                 }
-
-
-                $this->session->set_flashdata('message', $this->ion_auth->messages());
-                redirect('/', 'refresh');
             } else {
                 // if the login was un-successful
                 // redirect them back to the login page
                 $this->session->set_flashdata('message', $this->ion_auth->errors());
-                redirect('auth/muestra_pantalla_autenticacion', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+                $this->muestra_pantalla_autenticacion();
+
+                //  redirect('auth/muestra_pantalla_autenticacion', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
             }
         } else {
-            $this->session->set_flashdata('message', $this->ion_auth->errors());
+            $this->session->set_flashdata('message', '<div class = "text-left  alert alert-success">'
+                    . '<a class = "  close  " data-dismiss = "alert" >X</a>'
+                    . '<i class = "glyphicon glyphicon-exclamation-sign" style = "transform:scale(1.5);"></i>&nbsp;
+                    &nbsp;
+                    &nbsp;
+                    '
+                    . 'Datos de acceso incompletos.</div>');
             $this->muestra_pantalla_autenticacion();
-            //redirect("auth/muestra_pantalla_autenticacion");
         }
+        /* $this->form_validation->set_rules('identity', 'Usuario', 'required');
+          $this->form_validation->set_rules('password', 'Contraseña', 'required');
+          $this->form_validation->set_message('required', '%s es un campo requerido');
+          if ($this->form_validation->run() == true) {
+          // check to see if the user is logging in
+          if ($this->ion_auth->login($nombre_clave['identity'], $nombre_clave['password'], $nombre_clave['remember'])) {
+          //if the login is successful
+          //redirect them back to the home page. Despliegue de pantalla administrador, maestro o estudiante
+          if ($this->ion_auth->in_group('estudiante')) {
+          $datos['users_id'] = $this->session->userdata('user_id');
+          // $datos['sesion_id'] = $_GET['session_id'];
+          $datos['inicio'] = date('Y-m-d H: i: s');
+          $this->sesion_model->registra_informacion_inicio_sesion($datos);
+          }
+          $this->session->set_flashdata('message', $this->ion_auth->messages());
+          redirect('/', 'refresh');
+          } else {
+          // if the login was un-successful
+          // redirect them back to the login page
+          $this->session->set_flashdata('message', $this->ion_auth->errors());
+          redirect('auth/muestra_pantalla_autenticacion', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+          }
+          } else {
+          $this->session->set_flashdata('message', $this->ion_auth->errors());
+          $this->muestra_pantalla_autenticacion();
+          //redirect("auth/muestra_pantalla_autenticacion");
+          } */
     }
 
     public function muestra_pantalla_administrador() {
@@ -844,10 +879,10 @@ class Auth extends CI_Controller {
             'name' => 'username', 'id' => 'username', 'type' => 'text',
             'value' => $this->form_validation->set_value('username'),
             'class' => 'text-center form-control', //añadido
-            'placeholder' => 'usuario', //añadido
+            'placeholder' => 'Nombre de usuario', //añadido
             'required' => 'true', //añadido
             'autofocus' >= "autofocus", //añadido,
-            'pattern' => ".{9}", 'title' => "9 caracteres. Mi matricula: so9011559 "
+            'pattern' => ".{9,30}", 'title' => "Ejemplo: maestro de algoritmos o so9011559. (9 a 30 caracteres) "
         );
         $this->data['nombre'] = array(
             'name' => 'nombre', 'id' => 'Nombre', 'type' => 'text',
@@ -856,7 +891,7 @@ class Auth extends CI_Controller {
             'placeholder' => 'Nombre a mostrar', //añadido
             'required' => 'true', //añadido
             'autofocus' >= "autofocus", //añadido
-            'pattern' => ".{8,60}", 'title' => "8 a 60  caracteres. Ejemplo: mi nombre"
+            'pattern' => ".{9,50}", 'title' => "Ejemplo: mi nombre. (9 a 50  caracteres)"
         );
         $this->data['email'] = array(
             'name' => 'email', 'id' => 'email', 'type' => 'email',
@@ -875,8 +910,8 @@ class Auth extends CI_Controller {
             'placeholder' => 'contraseña', //añadido
             'required' => 'true', //añadido
             'autofocus' >= "autofocus", //añadido
-            'title' => '8 a 30 caracteres. Ejemplo: ********', //añadido
-            'pattern' => ".{8,30}"
+            'title' => 'Ejemplo: ********. (9 a 30 caracteres)', //añadido
+            'pattern' => ".{9,30}"
         );
         $this->data['password_confirm'] = array(
             'name' => 'password_confirm', 'id' => 'password_confirm', 'type' => 'password',
@@ -885,13 +920,13 @@ class Auth extends CI_Controller {
             'placeholder' => 'confirmar contraseña', //añadido
             'required' => 'true', //añadido
             'autofocus' >= "autofocus", //añadido
-            'title' => '8 a 30 caracteres. Ejemplo: ********', //añadido
-            'pattern' => ".{8,30}"
+            'title' => 'Ejemplo: ********. (9 a 30 caracteres) ', //añadido
+            'pattern' => ".{9,30}"
         );
         $title['title'] = "Registar datos de usuario";
         $this->data['header_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-        $this->data['header'] = $this->load->view('pagina/encabezado_pagina', '', true);
-        $this->data['menu'] = $this->load->view('pagina/menu', '', true);
+        $menu['menu'] = $this->load->view('pagina/menu', '', true);
+        $this->data['header'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
         $this->data['footer'] = $this->load->view('pagina/pie_pagina', '', true);
         $this->_render_page('auth/registrar', $this->data);
     }
@@ -926,15 +961,14 @@ class Auth extends CI_Controller {
     }
 
     public function valida_entradas() {
-
         $tables = $this->config->item('tables', 'ion_auth');
         //validate form input
-        $this->form_validation->set_rules('username', 'usuario', 'required|min_length[8]|max_length[60]');
-        $this->form_validation->set_rules('nombre', 'nombre', 'required|min_length[8]|max_length[60]');
+        $this->form_validation->set_rules('username', 'usuario', 'required|min_length[9]|max_length[30]');
+        $this->form_validation->set_rules('nombre', 'nombre', 'required|min_length[9]|max_length[50]');
         $this->form_validation->set_rules('email', 'email', 'required|valid_email|min_length[10]|max_length[60]'); //|callback_existecorreo
-        $this->form_validation->set_rules('password', 'contraseña', 'required|matches[password_confirm]|min_length[8]|max_length[60]');
-        $this->form_validation->set_rules('password_confirm', 'confirmar contraseña', 'required|min_length[8]|max_length[60]');
-        $this->form_validation->set_rules('required', '%s es requerido');
+        $this->form_validation->set_rules('password', 'contraseña', 'required|matches[password_confirm]|min_length[9]|max_length[20]');
+        $this->form_validation->set_rules('password_confirm', 'confirmar contraseña', 'required|min_length[9]|max_length[20]');
+        // $this->form_validation->set_rules('required', '%s es requerido');
         if ($this->form_validation->run() == true) {
             $datos = $this->ingresa_datos_registrar();
         }
@@ -953,8 +987,8 @@ class Auth extends CI_Controller {
         $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
         $title['title'] = "Recuperar datos de acceso";
         $this->data['header_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-        $this->data['header'] = $this->load->view('pagina/encabezado_pagina', '', true);
-        $this->data['menu'] = $this->load->view('pagina/menu', '', true);
+        $menu['menu'] = $this->load->view('pagina/menu', '', true);
+        $this->data['header'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
         $this->data['footer'] = $this->load->view('pagina/pie_pagina', '', true);
         $this->_render_page('auth/recuperar', $this->data);
     }
@@ -1159,7 +1193,6 @@ class Auth extends CI_Controller {
         if (!$this->ion_auth->logged_in() || (!$this->ion_auth->is_admin() && !($this->ion_auth->user()->row()->id == $id))) {
             redirect('auth', 'refresh');
         }
-
         $user = $this->ion_auth->user($id)->row();
         $groups = $this->ion_auth->groups()->result_array();
         $currentGroups = $this->ion_auth->get_users_groups($id)->result();
@@ -1277,14 +1310,14 @@ class Auth extends CI_Controller {
             'pattern' => ".{8,30}", 'title' => "8 a 30 caracteres (ejemplo:********) "
         );
         $usuario['usuario'] = $this->load->view('pagina/usuario', '', true);
-        $this->data['menu'] = $this->load->view('pagina/menu_admin', $usuario, true);
         $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
         //list the users  lista de usuarios
         $this->data['users'] = $this->ion_auth->users()->result();
 
         $title['title'] = "Administrador: usuarios";
         $this->data['header_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-        $this->data['header'] = $this->load->view('pagina/encabezado_pagina', '', true);
+        $menu['menu'] = $this->load->view('pagina/menu_admin', '', true);
+        $this->data['header'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
         $this->data['footer'] = $this->load->view('pagina/pie_pagina', '', true);
         //renderizacion de  la pagina autenticacion
         $this->_render_page('auth/editar', $this->data);
@@ -1336,7 +1369,43 @@ class Auth extends CI_Controller {
                 redirect("auth/", 'refresh'); //we should display a confirmation page here instead of the login page
             } else {
                 $this->session->set_flashdata('message', $this->ion_auth->errors());
-                redirect("auth/muestra_pantalla_recuperar", 'refresh');
+                redirect("auth/muestra_pantalla_recuperar", 'refresh   
+
+               
+
+             
+
+                 
+
+                  
+
+              
+
+               
+
+            
+
+              
+
+             
+
+            
+
+                
+
+            
+
+                
+
+                  
+
+             
+
+                  
+
+                 
+
+               ');
             }
         }
     }

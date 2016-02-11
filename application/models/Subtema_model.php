@@ -29,7 +29,7 @@ class Subtema_model extends CI_Model {
     public function verifica_existencia_subtema($subtema) {
         $this->db->where('tema_id', $subtema['tema_id']);
         $this->db->where('numero ', $subtema['numero']);
-        // $this->db->where('nombre ', $subtema['nombre']);
+         $this->db->where('nombre ', $subtema['nombre']);
         // $this->db->where('descripcion  ', $subtema['descripcion']);
         $query = $this->db->get('subtema');
         if ($query->num_rows() > 0) {

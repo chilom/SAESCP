@@ -28,21 +28,14 @@ class Estudiante_controller extends CI_Controller {
     }
 
     public function muestra_pantalla_inscribir() {
-        if (!$this->ion_auth->logged_in()) {
-            redirect('auth/');
-        } else {
-
-            $title['title'] = "Estudiante: inscripciones";
-            $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-            $this->data['header_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-            $this->data['header'] = $this->load->view('pagina/encabezado_pagina', '', true);
-            $usuario['usuario'] = $this->load->view('pagina/usuario', '', true);
-            $this->data['menu'] = $this->load->view('pagina/menu_estudiante', $usuario, true);
-            //  $this->data['operacion_terminada'] = $this->session->flashdata('operacion_terminada');
-            $this->data['footer'] = $this->load->view('pagina/pie_pagina', '', true);
-            //renderizacion de  la pagina autenticacion
-            $this->load->view('inscribir', $this->data);
-        }
+        $title['title'] = "Estudiante: inscripciones";
+        $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+        $this->data['header_html'] = $this->load->view('pagina/encabezado_html', $title, true);
+        $menu['menu'] = $this->load->view('pagina/menu_estudiante', '', true);
+        $this->data['header'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
+        $this->data['footer'] = $this->load->view('pagina/pie_pagina', '', true);
+        //renderizacion de  la pagina autenticacion
+        $this->load->view('inscribir', $this->data);
     }
 
     public function llena_lista_desplegable_cursos() {
@@ -58,15 +51,11 @@ class Estudiante_controller extends CI_Controller {
 
     public function verifica_no_inscrito() {
         $datos_inscripcion = $this->selecciona_cursos();
-        $this->form_validation->set_rules('curso_inscribir', 'Curso', 'required');
-        $this->form_validation->set_message('required', '%s en un campo requerido.');
-        $this->form_validation->set_message('min_length', '%s debe tener minimo %s carácteres.');
-        $this->form_validation->set_message('max_length', '%s debe tener maximo %s carácteres.');
-        $this->form_validation->set_message('is_unique', '%s ya existe.');
+        $this->form_validation->set_rules('curso_inscribir', 'Curso', 'required');     
         //lanzamos mensajes de error si es que los hay
         if ($this->form_validation->run()) {
             //verifica si esta inscrito
-            if ($this->lista_inscripcion_model->verifica_no_inscrito($datos_inscripcion) == FALSE) {
+            if (!$this->lista_inscripcion_model->verifica_no_inscrito($datos_inscripcion)) {
                 //si no esta inscrito crea el registri de inscripcion
                 $this->lista_inscripcion_model->guarda_cambios($datos_inscripcion);
                 $this->session->set_flashdata('message', '<div class="text-left  alert alert-success">'

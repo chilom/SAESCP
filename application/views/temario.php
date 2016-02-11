@@ -33,156 +33,141 @@ $desc_sstema = array('class' => ' form-control text-center', 'name' => 'desc_sst
 echo $encabezado_html;
 echo $encabezado_pagina;
 ?>
-<script src="javascript/temario.js"></script>
-<section class="cuerpo">
-    <?php echo $menu ?>
-    <div class="col-md-12" id="reg_temario">
+<br />
+<section class="cuerpo container-fluid">
+    <div class="col-md-3 text-left" style="background-color: rgba(0,0,0,.1);border-radius: 1em;">
+        <hr>
+        <h3 class="text-center" style="background: rgba(0,113,185,1);padding: 10%;color: white;">
+            <i class="glyphicon glyphicon-menu-hamburger" style="float: left;"></i>
+            Registro de temario
+        </h3>
+        <hr>
+        <ul class="nav nav-pills nav-stacked" id="myTabs">
 
-        <div class="col-md-3 text-left" style="background-color: rgba(0,0,0,.1);border-radius: 1em;">
-            <hr>
-            <h3 class="text-center" style="background: rgba(0,113,185,1);padding: 10%;color: white;">
-                <i class="glyphicon glyphicon-menu-hamburger" style="float: left;"></i>
-                Registro de temario
-            </h3>
-            <hr>
-            <ul class="nav nav-pills nav-stacked" id="myTabs">
-
-                <li class="active">
-                    <a href="#t"  data-toggle="tab">
-                        <span class="badge">1</span>
-                        temas</a></li>
-                <li>
-                    <a href="#st"  data-toggle="tab">
-                        &nbsp;&nbsp;    <span class="badge">2</span>
-                        subtemas</a></li>
-                <li>
-                    <a href="#sst"  data-toggle="tab">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="badge">3</span>
-                        subsubtemas</a></li>
-            </ul>
-            <hr>
-        </div>
-        <!-- tabs para temario -->
-        <div class="col-md-9">
-            <div class="tab-content">
-                <div class="tab-pane active " id="t">
-                    <div class="col-md-2"> </div> 
-                    <div class="col-md-8"> 
-                        <?php echo $message; ?>
-                        <div class="panel panel-default ">
-                            <div   class="panel-heading ">
-                                <i class="glyphicon glyphicon-plus-sign" style="float:left;"></i>
-                                <h4 class="text-center help-block " >
-                                    registrar tema
-                                </h4>                            
+            <li class="active">
+                <a href="#t"  data-toggle="tab">
+                    <span class="badge">1</span>
+                    temas</a></li>
+            <li>
+                <a href="#st"  data-toggle="tab">
+                    &nbsp;&nbsp;    <span class="badge">2</span>
+                    subtemas</a></li>
+            <li>
+                <a href="#sst"  data-toggle="tab">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="badge">3</span>
+                    subsubtemas</a></li>
+        </ul>
+        <hr>
+    </div>     
+    <!-- tabs para temario -->
+    <div class="col-md-9">
+        <div class="tab-content">
+            <div class="tab-pane active " id="t">
+                <div class="panel panel-default ">
+                    <div   class="panel-heading ">
+                        <h4 class="text-left " >
+                            Registrar tema
+                            <i class="glyphicon glyphicon-file float_derecha" ></i>
+                            <i class="glyphicon glyphicon-plus-sign float_derecha" ></i>
+                        </h4>                            
+                    </div>
+                    <div class="panel-body">       
+                        <!--   Form para registrar temas -->
+                        <form id="form_ajax_tema"  class="form_temario col-md-7" action="<?php echo base_url() ?>temario_controller/valida_entradas_tema" method="post">
+                            <div id="loader_t">
+                                <img src="<?php echo base_url() ?>assets/imagenes/ajax-loader.gif"> 
+                                <span class="text-primary">Cargando información...</span>
                             </div>
-                            <div class="panel-body">       
-                                <!--   Form para registrar temas -->
-                                <form id="form_ajax_tema"  class="form_temario" action="<?php echo base_url() ?>temario_controller/valida_entradas_tema" method="post">
-                                    <div id="loader_t">
-                                        <img src="<?php echo base_url() ?>imagenes/ajax-loader.gif"> 
-                                        <span class="text-primary">cargando información</span>
-                                    </div>
-                                    <select id="cursos_temario"   class="form-control " name="cursos_tema" value =<?php $this->form_validation->set_value('cursos_tema'); ?> >                          
-                                        <option value="" >                           
-                                            - cursos -           
-                                        </option>
-                                    </select> 
-                                    <?php echo form_dropdown('numero_tema', $numero, '', array('class' => 'form-control  ')); ?>  
-                                    <?php echo form_input($nombre_tema); ?>  
-                                    <?php echo form_textarea($desc_tema); ?>    
-                                    <button type="submit" class="btn btn-primary col-md-12" id="btn-tema">                               
-                                        <i class="glyphicon glyphicon-save" style="float: left;"></i>   Agregar tema
-                                    </button>   
-                                </form>
-                            </div>
-                        </div>
-                    </div>                                   
-                </div>
-                <div class="tab-pane" id="st">
-                    <div class="col-md-2"> </div> 
-                    <div class="col-md-8"> 
-                        <?php echo $message_s; ?>  
-                        <div class="panel panel-default ">
-                            <div class="panel-heading">
-                                <i class="glyphicon glyphicon-plus-sign" style="float:left;"></i>
-                                <h4 class="text-center help-block" >
-                                    registrar subtema
-                                </h4>  
-                            </div>
-                            <div class="panel-body">
-                                <div class="col-md-12" id="reg_subtema" >    
-                                    <!--   Form para registrar subtemas-->
-                                    <form id="form_ajax_subtema "  class="form_temario " action="<?php echo base_url() ?>temario_controller/valida_entradas_subtema" method="post">
-                                        <div id="loader_st">
-                                            <img src="<?php echo base_url() ?>imagenes/ajax-loader.gif"> 
-                                            <span class="text-primary">cargando información</span>
-                                        </div>
-                                        <select id="cursos_s"  required="true" class="form-control  " name="cursos_s"    value =<?php $this->form_validation->set_value('cursos_s'); ?>>
-                                            <option value="" placeholder="">
-                                                - cursos -           
-                                            </option>
-                                        </select>
-                                        <select  id="temas" name="temas" required="true" class="form-control ">
-                                            <option value="">- temas -</option>
-                                        </select>                                 
-                                        <?php echo form_dropdown('numero_subtema', $numero_s, 0, array('class' => 'form-control ', 'required' => 'true')); ?>                                     
-                                        <?php echo form_input($nombre_stema); ?>                                    
-                                        <?php echo form_textarea($desc_stema); ?>    
-                                        <button type="submit" class="btn btn-primary col-md-12 " id="">                               
-                                             <i class="glyphicon glyphicon-save" style="float: left;"></i> Agregar subtema
-                                        </button>     
-                                    </form>
-
-                                </div>
-                            </div>
-                        </div>
+                            <select id="cursos_temario"   class="form-control " name="cursos_tema" value =<?php $this->form_validation->set_value('cursos_tema'); ?> >                          
+                                <option value="" >                           
+                                    - cursos -           
+                                </option>
+                            </select> 
+                            <?php echo form_dropdown('numero_tema', $numero, '', array('class' => 'form-control  ')); ?>  
+                            <?php echo form_input($nombre_tema); ?>  
+                            <?php echo form_textarea($desc_tema); ?>    
+                            <button type="submit" class="btn btn-primary col-md-12" id="btn-tema">                               
+                                <i class="glyphicon glyphicon-save" style="float: left;"></i>   Agregar tema
+                            </button>   
+                        </form>
+                        <div class="col-md-5"><?php echo $message; ?></div>
                     </div>
                 </div>
-                <div class="tab-pane" id="sst">
-                    <div class="col-md-2"> </div> 
-                    <div class="col-md-8"> 
-                        <?php echo $message_ss; ?> 
-
-                        <div class="panel panel-default ">
-                            <div class="panel-heading">
-                                <i class="glyphicon glyphicon-plus-sign" style="float:left;"></i>
-                                <h4 class="text-center help-block ">
-                                    registrar subsubtema
-                                </h4> 
+            </div>
+            <div class="tab-pane" id="st">
+                <div class="panel panel-default ">
+                    <div class="panel-heading">
+                        <h4 class="text-left " >
+                            Registrar subtema
+                            <i class="glyphicon glyphicon-file float_derecha" ></i>
+                            <i class="glyphicon glyphicon-plus-sign float_derecha" ></i>
+                        </h4>  
+                    </div>
+                    <div class="panel-body">
+                        <!--   Form para registrar subtemas-->
+                        <form id="form_ajax_subtema "  class="form_temario col-md-7 " action="<?php echo base_url() ?>temario_controller/valida_entradas_subtema" method="post">
+                            <div id="loader_st">
+                                <img src="<?php echo base_url() ?>assets/imagenes/ajax-loader.gif"> 
+                                <span class="text-primary">Cargando información...</span>
                             </div>
-                            <div class="panel-body">
-                                <div class="col-md-12" id="reg_subsubtema"> 
-                                    <!--   Form para registrar subsubtemas-->
-                                    <form id="form_ajax_subsubtema"  class="form_temario" action="<?php echo base_url() ?>temario_controller/valida_entradas_subsubtema" method="post">
-                                        <div id="loader_sst">
-                                            <img src="<?php echo base_url() ?>imagenes/ajax-loader.gif"> 
-                                            <span class="text-primary">cargando información</span>
-                                        </div>
-                                        <select id="cursos_ss"  required="true" class="form-control " name="cursos_ss"   value =<?php $this->form_validation->set_value('cursos_ss'); ?>>
-                                            <option value="" >
-                                                - cursos -           
-                                            </option>
-                                        </select>                        
-                                        <select id="temas2" name="temas2" required="true" class="form-control " value =<?php $this->form_validation->set_value('temas2'); ?>>
-                                            <option class="" value="">- temas -</option>
-                                        </select>     
-                                        <select id="subtemas" name="subtemas"  required="true" class="form-control " value =<?php $this->form_validation->set_value('subtemas'); ?>>
-                                            <option value="">- subtemas -</option>
-                                        </select> 
-                                        <?= form_dropdown('numero_ssubtema', $numero_ss, 0, array('class' => 'form-control', 'required' => 'true')); ?>                                                        
-                                        <?= form_input($nombre_sstema); ?>                   
-                                        <?php echo form_textarea($desc_sstema); ?>   
-                                        <button type="submit" class="btn btn-primary col-md-12 " id="">  
-                                            <i class="glyphicon glyphicon-save" style="float: left;"></i>  Agregar subsubtema
-                                        </button>                    
-                                    </form>                             
-                                </div>
+                            <select id="cursos_s"  required="true" class="form-control  " name="cursos_s"    value =<?php $this->form_validation->set_value('cursos_s'); ?>>
+                                <option value="" placeholder="">
+                                    - cursos -           
+                                </option>
+                            </select>
+                            <select  id="temas" name="temas" required="true" class="form-control ">
+                                <option value="">- temas -</option>
+                            </select>                                 
+                            <?php echo form_dropdown('numero_subtema', $numero_s, 0, array('class' => 'form-control ', 'required' => 'true')); ?>                                     
+                            <?php echo form_input($nombre_stema); ?>                                    
+                            <?php echo form_textarea($desc_stema); ?>    
+                            <button type="submit" class="btn btn-primary col-md-12 " id="">                               
+                                <i class="glyphicon glyphicon-save" style="float: left;"></i> Agregar subtema
+                            </button>     
+                        </form>
+                        <div class="col-md-5"><?php echo $message_s; ?></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="sst">
+                <div class="panel panel-default ">
+                    <div class="panel-heading">
+                        <h4 class="text-left ">
+                            Registrar subsubtema
+                            <i class="glyphicon glyphicon-file float_derecha" ></i>
+                            <i class="glyphicon glyphicon-plus-sign float_derecha" ></i>
+                        </h4> 
+                    </div>
+                    <div class="panel-body">
+                        <!--   Form para registrar subsubtemas-->
+                        <form id="form_ajax_subsubtema"  class="form_temario col-md-7" action="<?php echo base_url() ?>temario_controller/valida_entradas_subsubtema" method="post">
+                            <div id="loader_sst">
+                                <img src="<?php echo base_url() ?>assets/imagenes/ajax-loader.gif"> 
+                                <span class="text-primary">Cargando información...</span>
                             </div>
-                        </div>
+                            <select id="cursos_ss"  required="true" class="form-control " name="cursos_ss"   value =<?php $this->form_validation->set_value('cursos_ss'); ?>>
+                                <option value="" >
+                                    - cursos -           
+                                </option>
+                            </select>                        
+                            <select id="temas2" name="temas2" required="true" class="form-control " value =<?php $this->form_validation->set_value('temas2'); ?>>
+                                <option class="" value="">- temas -</option>
+                            </select>     
+                            <select id="subtemas" name="subtemas"  required="true" class="form-control " value =<?php $this->form_validation->set_value('subtemas'); ?>>
+                                <option value="">- subtemas -</option>
+                            </select> 
+                            <?= form_dropdown('numero_ssubtema', $numero_ss, 0, array('class' => 'form-control', 'required' => 'true')); ?>                                                        
+                            <?= form_input($nombre_sstema); ?>                   
+                            <?php echo form_textarea($desc_sstema); ?>   
+                            <button type="submit" class="btn btn-primary col-md-12 " id="">  
+                                <i class="glyphicon glyphicon-save" style="float: left;"></i>  Agregar subsubtema
+                            </button>                    
+                        </form> 
+                        <div class="col-md-5"><?php echo $message_ss; ?></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
+    <script src="assets/javascript/temario.js"></script>
     <?php echo $pie_pagina; ?>

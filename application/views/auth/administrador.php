@@ -1,22 +1,17 @@
-<?php
-echo $header_html;
-echo $header;
-?>
-<section class="cuerpo">
+<?php echo $header_html;?>
+<section class="cuerpo container-fluid">
     <?php echo $menu; ?>
-    <div class="col-md-3"></div>
-    <div class="col-md-6"><?php echo $message; ?> </div> 
-     <div class="col-md-3"></div>
-
+   
+    <div class="col-md-12"><?php echo $message; ?> </div> 
     <section  class="col-md-12" >
         <div class="panel panel-default text-justify "  >
             <div class="panel-heading">    
-                <h4  class=" " style="">
+                <h3  class=" " style="">
                     Administración básica de usuarios    
                     <i class="glyphicon glyphicon-edit float_derecha" style="margin-left: 1%;"></i>
                     <i class="glyphicon glyphicon-search float_derecha" style="margin-left: 1%;"></i>
                     <i class="glyphicon glyphicon-plus-sign float_derecha" style=""></i>
-                </h4>   
+                </h3>   
             </div>
             <div class="panel-body  " >
                 <a href="auth/muestra_pantalla_registrar" class="btn btn-success text-left" style="float: right;"> 
@@ -43,14 +38,13 @@ echo $header;
                                     <?php endforeach ?>
                                 </td>
                                 <td class="text-center"><?php echo anchor("auth/muestra_pantalla_editar/" . $user->id, 'Editar'); ?></td>
-
                             </tr>
                         <?php endforeach; ?></tbody>
                 </table>  
             </div>
             <div class="panel-footer"></div>
         </div>
-         <hr> 
+        <br> 
     </section>
     <?php echo $footer; ?>
 

@@ -54,7 +54,7 @@ class Tema_model extends CI_Model {
     public function verifica_existencia_tema($datos_tema) {
         $this->db->where('curso_id', $datos_tema['curso_id']);
         $this->db->where('numero', $datos_tema['numero']);
-      //  $this->db->where('nombre ', $datos_tema['nombre']);
+        $this->db->where('nombre ', $datos_tema['nombre']);
         //$this->db->or_where('descripcion  ', $datos_tema['descripcion']);
         $query = $this->db->get('tema');
         if ($query->num_rows() > 0) {

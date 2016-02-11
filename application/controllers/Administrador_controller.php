@@ -9,59 +9,60 @@ class Administrador_controller extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->library(array('session','ion_auth'));
+        $this->load->library(array('session', 'ion_auth'));
 
         $this->load->model(array('curso_model', 'lista_inscripcion_model'));
         $this->load->helper(array('url', 'form'));
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/', 'refresh');
+        }
     }
 
     public function index() {
-        if(!$this->ion_auth->logged_in()){
-            redirect('auth/','refresh');
-        }else{
-            $this->muestra_pantalla_administrar(); 
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/', 'refresh');
+        } else {
+            $this->muestra_pantalla_administrar();
         }
     }
-    public function muestra_pantalla_administrar(){
-        redirect('administrador_controller/muestra_tabla_usuarios','refresh');
+
+    public function muestra_pantalla_administrar() {
+        redirect('administrador_controller/muestra_tabla_usuarios', 'refresh');
     }
 
     public function muestra_tabla_usuarios() {
-         if(!$this->ion_auth->logged_in()){
-            redirect('auth/','refresh');
-        }else{
         try {
             $crud = new grocery_CRUD();
             $crud->set_table('users');
             $crud->set_subject('Usuario');
-            $crud->set_theme('flexigrid');
+            $crud->set_theme('datatables');
             $crud->set_language('spanish');
             $crud->unset_add();
-            $crud->unset_read();         
+            $crud->unset_read();
             $crud->columns('id', 'username', 'password', 'nombre', 'email', 'active');
-            $crud->unset_columns('id','password','email','nombre');
-            $crud->unset_fields('id','password', 'email','created_on','ip_address','salt','activation_code', 'forgotten_password_code','forgotten_password_time','remember_code','last_login');            
+            $crud->unset_columns('id', 'password', 'email', 'nombre');
+            $crud->unset_fields('id', 'password', 'email', 'created_on', 'ip_address', 'salt', 'activation_code', 'forgotten_password_code', 'forgotten_password_time', 'remember_code', 'last_login');
             $crud->display_as('id', 'Id');
             $crud->display_as('username', 'Usuario ');
             $crud->display_as('nombre', 'Nombre');
             $crud->display_as('password', 'Contraseña');
             $crud->display_as('email', 'Correo electronico');
-            $crud->display_as('active', 'Activo');
+            $crud->display_as('active', 'Acceso');
             $crud->field_type('active', 'true_false');
             $crud->field_type('id', 'hidden');
             $crud->field_type('username', 'readonly');
             $crud->field_type('nombre', 'readonly');
             $crud->field_type('email', 'readonly');
-            $crud->fields('username','nombre', 'active');
-            $crud->required_fields('active');           
-            $output = $crud->render();           
+            $crud->fields('username', 'nombre', 'active');
+            $crud->required_fields('active');
+            $output = $crud->render();
             //$this->data['menu'] = $menu->show_menu(2);
             $title['title'] = "Administrador: activacion";
-                 $usuario['usuario'] = $this->load->view('pagina/usuario', '', true);
-            $this->data['menu'] = $this->load->view('pagina/menu_admin', $usuario, true);
+            $usuario['usuario'] = $this->load->view('pagina/usuario', '', true);
             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
             $this->data['header_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-            $this->data['header'] = $this->load->view('pagina/encabezado_pagina', '', true);
+            $menu['menu'] = $this->load->view('pagina/menu_admin', '', true);
+            $this->data['header'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
             $this->data['footer'] = $this->load->view('pagina/pie_pagina', '', true);
             $this->data['output'] = $output;
             //$this->load->view('maestro',$this->$data);
@@ -70,7 +71,6 @@ class Administrador_controller extends CI_Controller {
         } catch (Exception $e) {
             /* Si algo sale mal cachamos el error y lo mostramos */
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
-        }
         }
     }
 

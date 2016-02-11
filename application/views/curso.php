@@ -2,12 +2,11 @@
 echo $encabezado_html;
 echo $encabezado_pagina;
 ?>
+<br />
 <script src="javascript/reloj.js"></script>
 <!--<script src="javascript/curso_temario.js"></script>-->
-<section class="cuerpo">
-    <?php echo $menu; ?>
+<section class="cuerpo container-fluid">
     <!-- Boton de usuario -->
-    <div class="col-md-12" > 
         <!--   <div class="alert alert-success col-md-12">
                <i class="glyphicon glyphicon-info-sign " style="font-size: 2em;"> </i>
                <a class="  close  " data-dismiss="alert" >X</a><br>
@@ -84,9 +83,7 @@ echo $encabezado_pagina;
                 </table>  
             </div>    <!-- fin panel body-->                                          
         </div>          <!-- fin panel default-->                              
-    </div> 
     <?php print_r($this->session->all_userdata()); ?>
-
     <?php
     echo $pie_pagina;
     

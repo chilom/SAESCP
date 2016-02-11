@@ -19,8 +19,8 @@ $(document).ready(function () {
         if ($('#estudiante_checkbox').is(':checked')) {
             $('#maestro_checkbox').removeAttr('required');
             $('#username').attr({
-                'pattern': '[s0-9]{9}',
-                'title': '9 caracteres. Mi matricula: s09011559'
+                'pattern': '[sS0-9]{9}',
+                'title': ' Ejemplo: s09011559. (9 caracteres.)'
             });
             $('#nota_estudiantes').removeAttr('hidden');
             $('.no-es-estudiante').attr('hidden', 'true');
@@ -35,8 +35,8 @@ $(document).ready(function () {
             $('.si-es-estudiante').attr('hidden', 'true');
             $('#estudiante_checkbox').removeAttr('required');
             $('#username').attr({
-                'pattern': '[a-z ]{8,60}',
-                'title': '8-60 caracteres. Ejemplo: maestro de programacion',
+                'pattern': '[a-z ]{9,30}',
+                'title': 'Ejemplo: maestro de programacion. (9 a 30 caracteres.)',
                 'required': 'true'
             });
         } else {

@@ -136,8 +136,8 @@ $config['email_config'] = array(
       'wordwrap'=>TRUE,
       'wrapchars'=>76,
       'priority'=>3 
-   // 'smtp_user' => 'sis.saescp.admi@gmail.com',
- //   'smtp_pass' => 'administradoradministrador',
+    //'smtp_user' => 'sis.saescp.admi@gmail.com',
+    //'smtp_pass' => 'administradoradministrador',
 );
 
 /*
@@ -199,7 +199,7 @@ $config['message_start_delimiter'] = '<div class="text-left  alert alert-success
 $config['message_end_delimiter'] = '</div>';  // Message end delimiter
 $config['error_start_delimiter'] = '<div class="text-left  alert alert-success">'
         . '<a class="  close  " data-dismiss="alert" >X</a>'
-        . '<i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;&nbsp;';  // Error mesage start delimiter
+        . '<i class="glyphicon glyphicon-exclamation-sign" style="transform:scale(1.5);"></i>&nbsp;&nbsp;&nbsp;';  // Error mesage start delimiter
 $config['error_end_delimiter'] = '</div>'; // Error mesage end delimiter
 
 /* End of file ion_auth.php */

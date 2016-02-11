@@ -1,6 +1,5 @@
 <div class="col-md-12 "  style="">
-    <div class="col-md-1"></div>
-    <nav class="navbar  navbar-inverse col-md-10">
+    <nav class="navbar  navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -11,7 +10,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <span class="navbar-brand" >
-                    <i class="glyphicon glyphicon-briefcase"></i> 
+                    SAESC P
                 </span>
             </div>
 
@@ -19,31 +18,32 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class=" ">
-                        <a href="<?php echo base_url() . 'auth/' ?>" class="glyphicon glyphicon-home ">
+                        <a href="<?php echo base_url() . 'auth/' ?>" >
+                            <i class="glyphicon glyphicon-home" style=""></i>
                             Inicio
                         </a>
                     </li>   
                     <li class=" ">
-                        <a href="<?php echo base_url() . 'maestro_controller/muestra_pantalla_inscripcion' ?>" class="glyphicon glyphicon-check ">
-                            <i class="glyphicon glyphicon icon_aux" style=""></i>
+                        <a href="<?php echo base_url() . 'maestro_controller/muestra_pantalla_inscripcion' ?>" >
+                            <i class="glyphicon glyphicon-list " style=""></i>
                             Inscripciones
                         </a>
                     </li> 
                     <li class=" ">
-                        <a href="<?php echo base_url() . 'temario_controller/muestra_pantalla_temario' ?>" class="glyphicon glyphicon-list ">
-                            <i class="glyphicon glyphicon-plus-sign icon_aux" style=""></i>
+                        <a href="<?php echo base_url() . 'temario_controller/muestra_pantalla_temario' ?>" >
+                            <i class="glyphicon glyphicon-list-alt" style=""></i>
                             Temario
                         </a>
                     </li> 
                     <li class=" ">
-                        <a href="<?php echo base_url() . 'contenido_controller/muestra_pantalla_contenido' ?>" class="glyphicon glyphicon-briefcase">
-                            <i class="glyphicon glyphicon-plus-sign icon_aux" style=""></i>
+                        <a href="<?php echo base_url() . 'contenido_controller/muestra_pantalla_contenido' ?>" >
+                            <i class="glyphicon glyphicon-briefcase" style=""></i>
                             Contenido
                         </a>
                     </li> 
                     <li class=" ">
-                        <a href="<?php echo base_url() . 'actividades_controller/muestra_pantalla_actividades' ?>" class="glyphicon glyphicon-file ">
-                            <i class="glyphicon glyphicon-plus-sign icon_aux" style=" "></i>
+                        <a href="<?php echo base_url() . 'actividades_controller/muestra_pantalla_actividades' ?>" >
+                            <i class="glyphicon glyphicon-file" style=" "></i>
                             Actividades
                         </a>
                     </li> 
@@ -70,8 +70,5 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-
-    <div class="col-md-2"></div>
-
 </div>
 

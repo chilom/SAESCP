@@ -32,7 +32,7 @@ $lang['login_password_label']  = 'Contraseña:';
 $lang['login_remember_label']  = 'Recuérdame';
 $lang['login_submit_btn']      = 'Iniciar sesión';
 $lang['login_forgot_password'] = 'Recuperar cuenta';
-$lang['login_unsuccessful_not_active'] = 'Usuario no activo, contacta al administrador para activar tu cuenta.';
+$lang['login_unsuccessful_not_active'] = 'Usuario no activo:<br /><br />Contacta al administrador del sistema para activar tu cuenta.';
 
 
 // Index

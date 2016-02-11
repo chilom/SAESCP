@@ -39,9 +39,8 @@ class Actividades_controller extends CI_Controller {
             $data['operacion_terminada'] = $this->session->flashdata('operacion_terminada');
             $title['title'] = 'maestro: registrar actividad';
             $data['encabezado_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-            $data['encabezado_pagina'] = $this->load->view('pagina/encabezado_pagina', '', true);
-            $usuario['usuario'] = $this->load->view('pagina/usuario', '', true);
-            $data['menu'] = $this->load->view('pagina/menu_maestro', $usuario, true);
+            $menu['menu'] = $this->load->view('pagina/menu_maestro', '', true);
+            $data['encabezado_pagina'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
             $data['pie_pagina'] = $this->load->view('pagina/pie_pagina', '', true);
             $this->load->view('actividades', $data);
         }

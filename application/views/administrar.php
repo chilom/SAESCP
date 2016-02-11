@@ -7,12 +7,12 @@ echo $header;
     <div class=" col-md-12">
         <div class="panel panel-default  ">
             <div class="panel-heading">    
-                <h4 class="">Administración avanzada de usuarios
-                    <i class="glyphicon glyphicon-remove-sign  float_derecha" style="margin-left: 1%;"></i>
-                    <i class="glyphicon glyphicon-check  float_derecha" style="margin-left: 1%;"></i>
+                <h3 class="">Administración avanzada de usuarios
+                    <i class="glyphicon glyphicon-erase  float_derecha" style="margin-left: 1%;"></i>
+                    <i class="glyphicon glyphicon-edit  float_derecha" style="margin-left: 1%;"></i>
                     <i class="glyphicon glyphicon-search  float_derecha" style="margin-left: 1%;"></i>
                     <i class="glyphicon glyphicon-export  float_derecha" style=""></i>
-                </h4>
+                </h3>
             </div>
             <div class="panel-body">
                 <?php foreach ($output->css_files as $file): ?>
@@ -27,5 +27,6 @@ echo $header;
             </div>
             <div class="panel-footer"></div>
         </div>
+        <hr>
     </div>
     <?php echo $footer; ?>

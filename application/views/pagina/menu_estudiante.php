@@ -1,6 +1,5 @@
 <div class="col-md-12 "  style="">
-    <div class="col-md-2"></div>
-    <nav class="navbar  navbar-default col-md-8">
+    <nav class="navbar  navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -18,7 +17,6 @@
                         <span class="reloj glyphicon glyphicon-time" style="font-size: 1.2em;"> </span>
                         <span> &nbsp;&nbsp;&nbsp;ver reloj</span> 
                     </div>   
-
                 </a>
             </div>
 
@@ -49,8 +47,8 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="auth/logout">
-                                    <i class="glyphicon glyphicon-log-out " style="font-size: 1.5em;"></i>
-                                    &nbsp;Cerrar sesión
+                                    Cerrar sesión
+                                    &nbsp;<i class="glyphicon glyphicon-log-out " style=""></i>
                                 </a>
 
                             </li>

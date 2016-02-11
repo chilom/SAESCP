@@ -48,9 +48,8 @@ class Curso_controller extends CI_Controller {
         $title['title'] = 'estudiante: mis cursos';
         $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
         $data['encabezado_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-        $data['encabezado_pagina'] = $this->load->view('pagina/encabezado_pagina', '', true);
-        $usuario['usuario'] = $this->load->view('pagina/usuario', '', true);
-        $data['menu'] = $this->load->view('pagina/menu_estudiante', $usuario, true);
+        $menu['menu'] = $this->load->view('pagina/menu_autenticacion', '', true);
+        $data['encabezado_pagina'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
         $curso = $this->temario_model->obten_nombre_curso($this->session->userdata('curso'));
         $data['curso'] = $curso->nombrec;
         $tem = $this->temario_model->obtiene_tema($this->session->userdata('curso'));

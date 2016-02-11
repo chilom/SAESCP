@@ -1080,13 +1080,13 @@ class grocery_CRUD_Model_Driver extends grocery_CRUD_Field_Types {
             }
         }
 
-        if ($this->theme_config['crud_paging'] === true) {
+        if ($this->theme_config['crud_paging'] === true ) {
             if ($this->limit === null) {
                 $default_per_page = $this->config->default_per_page;
                 if (is_numeric($default_per_page) && $default_per_page > 1) {
                     $this->basic_model->limit($default_per_page);
                 } else {
-                    $this->basic_model->limit(10);
+                    $this->basic_model->limit(5);
                 }
             } else {
                 $this->basic_model->limit($this->limit[0], $this->limit[1]);

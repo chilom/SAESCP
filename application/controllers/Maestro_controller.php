@@ -9,17 +9,20 @@ class Maestro_controller extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->library(array('session','ion_auth'));
+        $this->load->library(array('session', 'ion_auth'));
 
         $this->load->model(array('curso_model', 'lista_inscripcion_model'));
         $this->load->helper(array('url', 'form'));
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/', 'refresh');
+        }
     }
 
     public function index() {
-         if (!$this->ion_auth->logged_in()) {
+        if (!$this->ion_auth->logged_in()) {
             redirect('auth/', 'refresh');
         } else {
-        $this->obtiene_cursos();
+            $this->obtiene_cursos();
         }
     }
 
@@ -38,52 +41,52 @@ class Maestro_controller extends CI_Controller {
     }
 
     public function obtiene_cursos() {
-         if (!$this->ion_auth->logged_in()) {
+        if (!$this->ion_auth->logged_in()) {
             redirect('auth/', 'refresh');
         } else {
-        try {
-            $crud = new grocery_CRUD();
-            $crud->set_table('curso');
-            $crud->set_subject('Curso');
-            $crud->set_theme('flexigrid');
-            $crud->set_language('spanish');
-            $crud->columns('id', 'nrc', 'nombre', 'descripcion');
-            $crud->unset_columns('activo');
-            $crud->display_as('id', 'Id');
-            $crud->display_as('nrc', 'Nrc ');
-            $crud->display_as('nombre', 'Curso');
-            $crud->field_type('id', 'hidden');
-            $crud->fields('id', 'nrc', 'nombre', 'descripcion');
-            $crud->required_fields('nombre', 'nrc', 'descripcion');
-            $crud->set_rules('nombre', 'Nombre de curso', 'trim|min_length[10]|max_length[50]|required');
-            $crud->set_rules('nrc', 'Nrc ', 'trim|min_length[5]|max_length[5]|required');
-            $crud->set_rules('descripcion', 'Descripcion', 'trim|min_length[10]|max_length[255]|required');
-            $crud->set_lang_string('delete_error_message', 'No se puede eliminar este curso. Informacion para la correcta operacion de la herramienta depende de este curso');
-            $crud->callback_before_delete(array($this, 'cek_before_delete'));
-            $output = $crud->render();
-            $title['title'] = "Maestro: administrar cursos";
-            $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-            $this->data['header_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-            $this->data['header'] = $this->load->view('pagina/encabezado_pagina', '', true);
-            $this->data['footer'] = $this->load->view('pagina/pie_pagina', '', true);
-            $this->data['output'] = $output;
-            $usuario['usuario'] = $this->load->view('pagina/usuario', '', true);
-            $this->data['menu'] = $this->load->view('pagina/menu_maestro', $usuario, true);
-            $this->load->view('maestro', $this->data);
-        } catch (Exception $e) {
-            /* Si algo sale mal cachamos el error y lo mostramos */
-            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
-        }
+            try {
+                $crud = new grocery_CRUD();
+                $crud->set_table('curso');
+                $crud->set_subject('Curso');
+                $crud->set_theme('datatables');
+                $crud->set_language('spanish');
+                $crud->columns('id', 'nrc', 'nombre', 'descripcion');
+                $crud->unset_columns('activo');
+                $crud->unset_read();
+                $crud->unset_export();
+                $crud->display_as('id', 'Id');
+                $crud->display_as('nrc', 'Nrc ');
+                $crud->display_as('nombre', 'Curso');
+                $crud->field_type('id', 'hidden');
+                $crud->fields('id', 'nrc', 'nombre', 'descripcion');
+                $crud->required_fields('nombre', 'nrc', 'descripcion');
+                $crud->set_rules('nombre', 'Nombre de curso', 'trim|min_length[9]|max_length[50]|required');
+                $crud->set_rules('nrc', 'Nrc ', 'trim|min_length[5]|max_length[5]|required');
+                $crud->set_rules('descripcion', 'Descripcion', 'trim|min_length[10]|max_length[255]|required');
+                $crud->set_lang_string('delete_error_message', 'No se puede eliminar este curso. El curso ya contiene informacion considerable para la correcta operación de la herramienta.');
+                $crud->callback_before_delete(array($this, 'cek_before_delete'));
+                $output = $crud->render();
+                $title['title'] = "Maestro: administrar cursos";
+                $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+                $this->data['header_html'] = $this->load->view('pagina/encabezado_html', $title, true);
+                $menu['menu'] = $this->load->view('pagina/menu_maestro', '', true);
+                $this->data['header'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
+                $this->data['footer'] = $this->load->view('pagina/pie_pagina', '', true);
+                $this->data['output'] = $output;
+
+                $this->load->view('maestro', $this->data);
+            } catch (Exception $e) {
+                /* Si algo sale mal cachamos el error y lo mostramos */
+                show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
+            }
         }
     }
 
     public function llena_lista_estudiantes() {
-         if (!$this->ion_auth->logged_in()) {
-            redirect('auth/', 'refresh');
-        } else {
+
         try {
             $crud = new grocery_CRUD();
-            $crud->set_theme('flexigrid');
+            $crud->set_theme('datatables');
             $crud->set_table('inscripcion');
             $crud->set_relation('users_id', 'users', 'username');
             $crud->set_relation('curso_id', 'curso', 'nombre');
@@ -100,38 +103,33 @@ class Maestro_controller extends CI_Controller {
             $crud->display_as('curso_id', 'Curso');
             $crud->display_as('users_id', 'Usuario ');
             $crud->display_as('activo', 'Acceso');
-
             $crud->field_type('activo', 'true_false');
             $crud->field_type('id', 'readonly');
             $crud->field_type('curso_id', 'readonly');
             $crud->field_type('users_id', 'readonly');
-
             $crud->required_fields('inscrito');
-
             $output = $crud->render();
-
 
             $title['title'] = 'maestro: inscripciones';
             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
             $this->data['header_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-            $this->data['header'] = $this->load->view('pagina/encabezado_pagina', '', true);
+            $menu['menu'] = $this->load->view('pagina/menu_maestro', '', true);
+            $this->data['header'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
             $this->data['footer'] = $this->load->view('pagina/pie_pagina', '', true);
             $this->data['output'] = $output;
             $usuario['usuario'] = $this->load->view('pagina/usuario', '', true);
-            $this->data['menu'] = $this->load->view('pagina/menu_maestro', $usuario, true);
             $this->load->view('inscripcion', $this->data);
         } catch (Exception $e) {
             /* Si algo sale mal cachamos el error y lo mostramos */
             //   show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
-        }
     }
 
     public function muestra_pantalla_inscripcion() {
-         if (!$this->ion_auth->logged_in()) {
+        if (!$this->ion_auth->logged_in()) {
             redirect('auth/', 'refresh');
         } else {
-        redirect("maestro_controller/llena_lista_estudiantes");
+            redirect("maestro_controller/llena_lista_estudiantes");
         }
         /*   $this->load->library('Menu');
           $menu = new Menu;

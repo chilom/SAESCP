@@ -2,10 +2,10 @@
 
 <footer  id="footer" style="" class="col-md- " >
     <div class="col-md-8" style="//border: 1px solid rgba(0,113,182,1);">
-        <h5 class="text-left text-primary" style="color:white;">F.E.I. Universidad Veracruzana, 2015. Derechos reservados.</h5>     
+        <small class="text-left " style="">F.E.I. Universidad Veracruzana, 2015. Derechos reservados.</small>     
     </div>
     <div class="col-md-4  text-right" style="">
-        <h5 class="">Visite <a href="https://www.uv.mx/fei/" style="color:white;">www.uv.mx/fei/</a></h5>          
+        <small class="">Visite <a href="https://www.uv.mx/fei/"  style="color: white;text-decoration: underline;">www.uv.mx/fei/</a></small>          
     </div>
 </footer>
 

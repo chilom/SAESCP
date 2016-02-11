@@ -14,9 +14,9 @@ class Contenido_controller extends CI_Controller {
         $this->load->helper(array('url', 'form', 'language'));
         $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
         $this->lang->load('auth');
-        // if (!$this->ion_auth->logged_in()) {
-        //    redirect('auth/', 'refresh');
-        //  }
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/', 'refresh');
+        }
     }
 
     public function index() {
@@ -28,18 +28,13 @@ class Contenido_controller extends CI_Controller {
     }
 
     public function muestra_pantalla_contenido() {
-        if (!$this->ion_auth->logged_in()) {
-            redirect('auth/', 'refresh');
-        } else {
-            $title['title'] = 'maestro: registrar contenido';
-            $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-            $data['encabezado_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-            $data['encabezado_pagina'] = $this->load->view('pagina/encabezado_pagina', '', true);
-            $usuario['usuario'] = $this->load->view('pagina/usuario', '', true);
-            $data['menu'] = $this->load->view('pagina/menu_maestro', $usuario, true);
-            $data['pie_pagina'] = $this->load->view('pagina/pie_pagina', '', true);
-            $this->load->view('contenido', $data);
-        }
+        $title['title'] = 'maestro: registrar contenido';
+        $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+        $data['encabezado_html'] = $this->load->view('pagina/encabezado_html', $title, true);
+        $menu['menu'] = $this->load->view('pagina/menu_maestro', '', true);
+        $data['encabezado_pagina'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
+        $data['pie_pagina'] = $this->load->view('pagina/pie_pagina', '', true);
+        $this->load->view('contenido', $data);
     }
 
     public function llena_lista_desplegable_subsubtemas($id) {
@@ -147,7 +142,8 @@ class Contenido_controller extends CI_Controller {
         $fin_lectura = $this->contenido_model->registra_fin_lectura_contenido($datos);
         echo json_encode($fin_lectura);
     }
-    public function verifica_si_lectura_terminada($id){
+
+    public function verifica_si_lectura_terminada($id) {
         echo json_encode($this->contenido_model->verifica_si_lectura_termino($id));
     }
 

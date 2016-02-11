@@ -2,12 +2,15 @@
 echo $header_html;
 echo $header;
 ?>
-<section class="cuerpo">
-    <?php echo $menu; ?>
-    <section id='maestro' class=" col-md-12 " style="">
+<br />
+<section class="cuerpo container-fluid">
+    <div id='maestro' class=" " style="">
         <div class="panel panel-default  ">
             <div class="panel-heading">    
-                <h4 class="text-center text-">Validar inscripciones</h4>                  
+                <h3 class="text-left ">Validar inscripciones
+                    <i class="glyphicon glyphicon-list-alt float_derecha" ></i>
+                    <i class="glyphicon glyphicon-ok float_derecha" ></i>
+                </h3>
             </div>
             <div class="panel-body">
                 <?php foreach ($output->css_files as $file): ?>
@@ -16,12 +19,11 @@ echo $header;
                 <?php foreach ($output->js_files as $file): ?>
                     <script src="<?php echo $file; ?>"></script>
                 <?php endforeach; ?>
-                <script src="javascript/maestro.js"></script>
                 <div class="tabla_crud"><?= $output->output; ?>  </div>  
             </div>
         </div>
-        <?php
-        echo $footer;
-        ?>
+    </div>
+    <script src="javascript/maestro.js"></script>
+    <?php echo $footer; ?>
 
 

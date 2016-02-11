@@ -104,7 +104,7 @@ div.form-button-box {
 }
 .report-div.success
 {
-	border-color: green;
+	border-color: rgba(0,182,95,1);
 }
 .report-div.success p
 {

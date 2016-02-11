@@ -1,50 +1,28 @@
-<section class='row col-md-12 cuerpo '>
 
-<div class="row col-md-12 " >
-    <div class="col-md-2">        
-        <!--<img alt="" style="margin-top: -30%;" class=" img-rounded" width="100" height="100" src="imagenes/fei_logo.png">-->
-    </div>
-    <nav class="col-md-8 navbar navbar-inverse navbar-static-top  image4 barra_menu " >
-        <div class="">
-            <div class="navbar-header">  
-                <div class="navbar-brand">
-                  <!--  <img alt="Brand" class=" img-rounded" width="100" height="30" src="imagenes/logo.png">-->
-                </div>
-                <button type="button" class="navbar-toggle" data-toggle='collapse' data-target='.navbar-collapse'>
-                    <span class="icon-bar"></span>
-
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="navbar-brand navbar-left" style=""></div>            
-            </div> <!--fin div navbar-header-->
-            <div class='collapse navbar-collapse'>
-                <ul id="menu_1" class="menus nav navbar-nav ">
-                    <li id="" class="mna">
-                        <a  id="" href="auth/"  style="">
-                            <span class="glyphicon glyphicon-home glyphicon-menu">                                                                
-                            </span>
-                            Inicio
-                        </a>
-                    </li>
-                   <!-- <li id="" class="mna">
-                        <a  id="acercade" style="" >
-                            <span class="glyphicon glyphicon-question-sign glyphicon-menu">                                
-                            </span> 
-                            Acerca de   
-                        </a>
-                    </li>-->
-                </ul>
-<!--<p class="navbar-text navbar-right">no <a href="#" class="navbar-link">sesiones</a></p>-->
-            </div> <!--div collapse navbar collapse-->
+<nav class="navbar  navbar-inverse col-md- navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand" >
+                <span class=" ">SAESC P</span> 
+            </div>
         </div>
-    </nav>
-    <div class="col-md-2">  
-
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class=" ">
+                </li>   
+                <li class=" ">
+                </li> 
+            </ul>
+        </div>
     </div>
-</div>
-
-
-
+</nav>
 
 

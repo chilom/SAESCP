@@ -2,6 +2,9 @@
 // Codigo jQuery general (funciones utilizadas)
 $(document).ready(function () {
     $('.alert-success').delay(4000).fadeOut(1500);
+        $('.report-div.success ').delay(4000).fadeOut(1500);
+
+   
     $('[rel="tooltip"]').tooltip('show');
     $('.tablas').DataTable({
         "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
@@ -32,7 +35,6 @@ $(document).ready(function () {
     $('#ocultar_informacion').on('mouseover', function () {
         $('#informacion').toggle();
         $('#ver_informacion').show();
-
         $(this).toggle();
     });
     $('#ver_informacion').on('mouseover', function () {

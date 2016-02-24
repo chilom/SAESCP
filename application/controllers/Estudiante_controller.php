@@ -58,16 +58,16 @@ class Estudiante_controller extends CI_Controller {
             if (!$this->lista_inscripcion_model->verifica_no_inscrito($datos_inscripcion)) {
                 //si no esta inscrito crea el registri de inscripcion
                 $this->lista_inscripcion_model->guarda_cambios($datos_inscripcion);
-                $this->session->set_flashdata('message', '<div class="text-left  alert alert-success">'
-                        . '<a class="  close  " data-dismiss="alert" >X</a>'
-                        . '<i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;&nbsp;'
-                        . 'Has quedado inscrito al curso. Espera a que el maestro active el acceso.</div>');
+                $this->session->set_flashdata('message', '<div class="  alert alert-success">'
+                                                       . '<a class="  close  " data-dismiss="alert" >X</a>'
+                                                       . '<i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;&nbsp;'
+                                                       . '<div>Has quedado inscrito al curso. Espera a que el maestro active el acceso.</div></div>');
                 redirect('estudiante_controller/muestra_pantalla_inscribir', 'refresh');
             } else {
-                $this->session->set_flashdata('message', '<div class="text-left  alert alert-success">'
-                        . '<a class="  close  " data-dismiss="alert" >X</a>'
-                        . '<i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;&nbsp;'
-                        . 'Ya estas inscrito en este curso. Elige otro curso.</div>');
+                $this->session->set_flashdata('message', '<div class="  alert alert-success">'
+                                                       . '<a class="  close  " data-dismiss="alert" >X</a>'
+                                                       . '<i class="glyphicon glyphicon-warning-sign "></i>&nbsp;&nbsp;&nbsp;'
+                                                       . '<div class="">Ya estas inscrito en este curso. Elige otro curso.</div></div>');
                 $this->muestra_pantalla_inscribir();
             }
         } else {

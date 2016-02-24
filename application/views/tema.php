@@ -2,12 +2,10 @@
 echo $encabezado_html;
 echo $encabezado_pagina;
 ?>
-<script src="assets/javascript/temas.js"></script>
-<script src="assets/javascript/reloj.js"></script>
-<script src="assets/javascript/contenido_subsubtema.js"></script>
-<section class="cuerpo">
-    <?php echo $menu; ?>
-    <section id='estudiante' class="col-md-12 " style=" ;">
+
+<section class="cuerpo container-fluid">
+
+    <section id='estudiante' class="col-md-12 " style=" background-color: #e5e5e5;">
         <!--   <div class="alert alert-success text-left">
                <i class="glyphicon glyphicon-info-sign col-md-2" style="font-size: 2em;"></i>
                <a class="  close  " data-dismiss="alert" >X</a>                                  
@@ -41,6 +39,7 @@ echo $encabezado_pagina;
                         ?>    
                         <li class=" col-md-12 alert alert-warning text-center" value="">
                             <i class="glyphicon glyphicon-info-sign" style="float:left;"></i>
+                            <a class="  close  " data-dismiss="alert" >X</a>&nbsp;
                             No hay contenido,<a href="curso_controller/"> volver</a>
                         </li>
                     <?php } ?>
@@ -110,19 +109,17 @@ echo $encabezado_pagina;
             <?php } else { ?>
                 <div class="alert alert-success">
                     <i class="glyphicon glyphicon-alert" style="float:left;"></i>
+                    <a class="  close  " data-dismiss="alert" >X</a>&nbsp;
                     No hay lecturas disponibles.
                 </div>
             <?php } ?>
         </div>
         <input type="hidden" id="id_contenido">
     </section>
-        <?php print_r($this->session->all_userdata()); ?>
 
-    
-    
-    
-    
-<!-- ventanas modales de aviso -->
+
+
+    <!-- ventanas modales de aviso -->
 
     <div id="modal_lectura" class="modal fade" role="dialog">
         <div class="modal-dialog ">
@@ -166,6 +163,9 @@ echo $encabezado_pagina;
             </div>
         </div>
     </div>
+<script src="assets/javascript/temas.js"></script>
+<script src="assets/javascript/reloj.js"></script>
+<script src="assets/javascript/contenido_subsubtema.js"></script>
     <?php echo $pie_pagina; ?>
 
 

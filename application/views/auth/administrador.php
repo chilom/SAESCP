@@ -1,10 +1,7 @@
 <?php echo $header_html;?>
 <section class="cuerpo container-fluid">
     <?php echo $menu; ?>
-   
-    <div class="col-md-12"><?php echo $message; ?> </div> 
-    <section  class="col-md-12" >
-        <div class="panel panel-default text-justify "  >
+           <div class="panel panel-default text-justify "  >
             <div class="panel-heading">    
                 <h3  class=" " style="">
                     Administración básica de usuarios    
@@ -14,6 +11,7 @@
                 </h3>   
             </div>
             <div class="panel-body  " >
+                <div class="col-md-12"><?php echo $message; ?> </div> 
                 <a href="auth/muestra_pantalla_registrar" class="btn btn-success text-left" style="float: right;"> 
                     Nuevo 
                 </a>
@@ -44,8 +42,7 @@
             </div>
             <div class="panel-footer"></div>
         </div>
-        <br> 
-    </section>
+        <br /> 
     <?php echo $footer; ?>
 
 

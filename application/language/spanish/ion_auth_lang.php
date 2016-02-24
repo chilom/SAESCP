@@ -15,7 +15,7 @@
 */
 
 // Account Creation
-$lang['account_creation_successful'] 	  	 = 'Usuario registrado con exito:<br><br>&nbsp;* El acceso debe ser activado manualmente por el administrador del sistema';
+$lang['account_creation_successful'] 	  	 = '<div class="text-center">Usuario registrado con exito: el acceso debe ser activado manualmente por el administrador del sistema';
 $lang['account_creation_unsuccessful'] 	 	 = 'Cuenta no creada';
 $lang['account_creation_duplicate_email'] 	 = 'Este Email ya se registró, pruebe con otro';
 $lang['account_creation_duplicate_username'] = 'Este Nombre de usuario ya esta registrado o es inválido';
@@ -28,7 +28,7 @@ $lang['account_creation_invalid_default_group'] = 'Invalid default group name se
 // Password
 $lang['password_change_successful'] 	 	 = 'Contraseña renovada con éxito';
 $lang['password_change_unsuccessful'] 	  	 = 'No se ha podido cambiar la contraseña.<br/><br/>Intenta de nuevo.';
-$lang['forgot_password_successful'] 	 	 = 'Nueva contraseña enviada por email';
+$lang['forgot_password_successful'] 	 	 = '<div class="text-center">Nueva contraseña enviada por correo electrónico.</div>';
 $lang['forgot_password_unsuccessful'] 	 	 = 'No se pudo enviar información al correo de tu cuenta.<hr>No se ha podido crear una nueva contraseña.';
 
 // Activation
@@ -40,8 +40,8 @@ $lang['activation_email_successful'] 	  	 = 'Email de activación enviado';
 $lang['activation_email_unsuccessful']   	 = 'No se pudo enviar el email de activación';
 
 // Login / Logout
-$lang['login_successful'] 		      	     = ' Sesión iniciada con éxito';
-$lang['login_unsuccessful'] 		  	     = ' Este usuario no existe:<br /><br />&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-ok"></i>&nbsp;&nbsp;&nbsp;<a class="alert-link" href="auth/muestra_pantalla_registrar">Registrate</a><br>&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-ok" ></i>&nbsp;&nbsp;&nbsp;<a class="alert-link" href="auth/muestra_pantalla_recuperar">Recupera tu cuenta de acceso por email</a>';
+$lang['login_successful'] 		      	     = '<div class="text-center">Sesión iniciada con éxito.</div>';
+$lang['login_unsuccessful'] 		  	     = ' Este usuario no existe:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="alert-link" href="auth/muestra_pantalla_registrar">regístrate</a>&nbsp;&nbsp;&nbsp;<span> o </span>&nbsp;&nbsp;&nbsp;<a class="alert-link" href="auth/muestra_pantalla_recuperar">recupera tu cuenta de acceso por email</a>';
 $lang['logout_successful'] 		 	         = 'Sesión finalizada con éxito';
 
 // Account Changes

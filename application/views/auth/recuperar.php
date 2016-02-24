@@ -21,7 +21,8 @@ $email = array('name' => 'email',
                 </h3> 
             </div>
             <div class="panel-body">
-                <div class="col-md-2"></div>
+                <div class="row"><?php echo $message; ?></div>
+                <div class="col-md-4"></div>
                 <?php echo form_open(base_url() . "auth/determina_existencia_usuario", array('class' => 'col-md-5', 'role' => 'form')); ?>
                 <fieldset  class="">
                     <legend class="help-block">Datos requeridos</legend>
@@ -46,7 +47,7 @@ $email = array('name' => 'email',
                 </fieldset>
                 <?php echo form_close(); ?>
 
-                <div class="col-md-5"><?php echo $message; ?></div>
+                <div class="col-md-5"></div>
 
             </div>
             <div class="panel-footer ">

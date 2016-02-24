@@ -3,7 +3,6 @@ echo $encabezado_html;
 echo $encabezado_pagina;
 ?>
 <br />
-<script src="javascript/reloj.js"></script>
 <!--<script src="javascript/curso_temario.js"></script>-->
 <section class="cuerpo container-fluid">
     <!-- Boton de usuario -->
@@ -75,15 +74,15 @@ echo $encabezado_pagina;
                         <div class="col-md-12 alert alert-warning" >
                             <span class="glyphicon glyphicon-info-sign" style="float:left;"></span> 
                             <a class="  close  " data-dismiss="alert"  style="float:right;">X</a>
-                            <p>No hay informacion disponible. El maestro aun no crea el temario.</p>
+                            <p>&nbsp;&nbsp;&nbsp;No hay informacion disponible. El maestro aun no crea el temario.</p>
                         </div>
                     <?php } ?>
 
                     </tbody>
                 </table>  
             </div>    <!-- fin panel body-->                                          
-        </div>          <!-- fin panel default-->                              
-    <?php print_r($this->session->all_userdata()); ?>
+        </div>          <!-- fin panel default-->     
+        <script src="assets/javascript/reloj.js"></script>
     <?php
-    echo $pie_pagina;
+    echo $pie_pagina; ?>
     

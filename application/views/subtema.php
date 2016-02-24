@@ -5,9 +5,8 @@ echo $encabezado_pagina;
 <script src="assets/javascript/reloj.js"></script>
 <script src="assets/javascript/temas.js"></script>
 
-<section class="cuerpo">
-    <?php echo $menu; ?>
-    <section id='estudiante' class="col-md-12 " style=" ">
+<section class="cuerpo container-fluid">
+    <section id='estudiante' class="col-md-12 " style="background-color: #e5e5e5; ">
         <!--<div class="alert alert-success">
             <i class="glyphicon glyphicon-info-sign col-md-2" style="font-size: 2em;"></i>
             <a class="  close  " data-dismiss="alert" >X</a>                                  
@@ -66,8 +65,7 @@ echo $encabezado_pagina;
                 </div>
             </div>
         </div>
-        <div class="col-md-9" id="contenido">
-        <?php print_r($this->session->all_userdata());?>
+        <div class="col-md-9" id="contenido" style="background: white;">
 
         </div>
     </section>

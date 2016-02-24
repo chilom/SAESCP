@@ -49,14 +49,12 @@ input,.form-control{box-shadow: none;background: white;font-size: inherit;}
 }*/
 .alert-success{background: rgba(0,182,95,1);border-color: rgba(0,182,95,1); color:white;font-weight: normal;opacity: 0.9;}
 .alert-success a.alert-link{color:white;text-decoration: underline;}
-#icono_autenticacion{//transform: scale(2.5) skewY(2deg) ;   //skewX(-5deg)
+#icono_autenticacion{
           transform: scale(2.5) ;
-         // background: linear-gradient(rgba(0,113,185,1),rgba(0,0,0,.3)); /* Standard syntax */
 }
 #autenticar,#recuperar{}
 .alert-warning{
-    //color:white;
-  // background: linear-gradient(rgba(0,113,185,1),rgba(0,113,185,1),rgba(0,113,185,.7));
+ 
 }
 
 .float_derecha{float: right;margin-left: 1%;}
@@ -72,7 +70,6 @@ input,.form-control{box-shadow: none;background: white;font-size: inherit;}
 input{margin-top: 0%;margin-bottom: 1%;}
 .icon_form{transform:scale(5) skewX(-2deg) skewY(-2deg);color:rgba(0,182,95,1);margin-top:0%;
            margin-left: 80%;  
-//          box-shadow: .1em .1em .1em 0em rgba(255,255,255,1);
           overflow: hidden;
 }
 #tabla_usuarios_previous{margin-right: 0%;}
@@ -87,7 +84,7 @@ padding: 15%;}
    padding: 15%;
 }
 a.DTTT_button.ui-button.DTTT_button_print{display: none;width: 0%;height: 0%;}
-//a.DTTT_button.ui-button.DTTT_button_xls{-moz-background:white;}
+
 .datatables-add-button {color:white;margin-top:0%;border-bottom: 5%;position: relative;}
 .groceryCrudTable tfoot tr th input[type="text"], .datatables div.form-div input[type="text"], .datatables div.form-div textarea{padding:0%;}
 .datatables-add-button a{background: rgba(0,182,95,07);color: white;}
@@ -127,10 +124,10 @@ li{text-decoration:none;}
 .icon_left{float: left;}
 .nav-pills>li>a {color:white;background: rgba(0,113,185,1);}
 .navbar-default{
-    //background:rgba(0,113,185,1);
+
 }
 .navbar-default .navbar-nav>li>a {
-   // color:white;
+  
 }
 .jumbotron{}
 #btn_informacion:hover{transform: scale(4);}
@@ -147,7 +144,7 @@ input:focus, input:active{transform: scaleX(1.05);font-weight: bold;color:rgba(0
 
 .iconos{transform:scale(3.5);color:rgba(0,113,185,1);}
 .dataTables_filter>label>input{background-color: white;}
-.ver{//color:rgba(0,182,95,1);
+.ver{
 }
 .navbar-inverse {
     background:rgba(0,113,185,.9);border-color: rgba(0,113,185,1);border-radius: 0em;}
@@ -172,11 +169,13 @@ input:focus, input:active{transform: scaleX(1.05);font-weight: bold;color:rgba(0
     color: white;
 }
 form{border-radius: 0em;padding: 2%;border:0.1em solid hsla(41,0%,90%,5);background-color: hsla(41,0%,97%,5);}
-//.ui-draggable .ui-dialog-titlebar>span,.ui-draggable .ui-dialog-titlebar>button {
-//display: none; 
-//}
+
 .text-primary{color:rgba(0,113,185,1);}
 .ui-widget-overlay{opacity: .7;background: rgba(0,113,185,1);}
 .report-div.success {
     background: rgba(0,182,95,.5);text-align: center;
 }
+.sombra1{-webkit-box-shadow: 0px 0px 0px rgba(0,113,185,1);color: rgba(0,113,185,1); }
+.glyphicon-warning-sign,.glyphicon-info-sign,.glyphicon-exclamation-sign {font-size: 1.5em;}
+.input-group-addon{background-color:  rgba(0,182,95,1);border:1px solid rgba(0,182,95,1);}
+.input-group-addon i.glyphicon {color:white;}

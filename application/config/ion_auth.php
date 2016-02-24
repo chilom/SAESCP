@@ -193,13 +193,14 @@ $config['store_salt'] = FALSE;
   | -------------------------------------------------------------------------
  */
 $config['delimiters_source'] = 'config';  // "config" = use the settings defined here, "form_validation" = use the settings defined in CI's form validation library
-$config['message_start_delimiter'] = '<div class="text-left  alert alert-success">'
-        . '<a class="  close  " data-dismiss="alert" >X</a>'
-        . '<i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;&nbsp;';  // Message start delimiter
+$config['message_start_delimiter'] = '<div class="text-  alert alert-success">'
+                                   . '<a class="  close  " data-dismiss="alert" >X</a>'
+                                   . '<i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;&nbsp;';  // Message start delimiter
 $config['message_end_delimiter'] = '</div>';  // Message end delimiter
-$config['error_start_delimiter'] = '<div class="text-left  alert alert-success">'
-        . '<a class="  close  " data-dismiss="alert" >X</a>'
-        . '<i class="glyphicon glyphicon-exclamation-sign" style="transform:scale(1.5);"></i>&nbsp;&nbsp;&nbsp;';  // Error mesage start delimiter
+
+$config['error_start_delimiter'] = '<div class="text-  alert alert-success">'
+                                 . '<a class="  close  " data-dismiss="alert" >X</a>'
+                                 . '<i class="glyphicon glyphicon-exclamation-sign" style="transform:scale(1.5);"></i>&nbsp;&nbsp;&nbsp;';  // Error mesage start delimiter
 $config['error_end_delimiter'] = '</div>'; // Error mesage end delimiter
 
 /* End of file ion_auth.php */

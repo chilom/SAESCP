@@ -6,8 +6,7 @@ echo $encabezado_pagina;
 <script src="assets/javascript/contenido_subsubtema.js"></script>
 
 <section class="cuerpo">
-    <?php echo $menu; ?>
-    <section id='estudiante' class="col-md-12 " style=" ">
+    <section id='estudiante' class="col-md-12 " style="background-color: #e5e5e5; ">
         <!--<div class="alert alert-success">
             <i class="glyphicon glyphicon-info-sign col-md-2" style="font-size: 2em;"></i>
             <a class="  close  " data-dismiss="alert" >X</a>                                  
@@ -40,6 +39,7 @@ echo $encabezado_pagina;
                 } else {
                     ?>    
                     <li class=" col-md-12 alert alert-warning" value="">
+                        <a class="  close  " data-dismiss="alert" >X</a>
                         No hay contenido,<a href="curso_controller/"> volver</a>
                     </li>
                 <?php } ?>
@@ -93,7 +93,8 @@ echo $encabezado_pagina;
         </div>
         <div class="col-md-9" id="contenido">
             <div class="alert alert-warning"> 
-                <i class="glyphicon glyphicon-info-sign" style="float: left;"></i>
+                <i class="glyphicon glyphicon-info-sign" style="float: left;"> </i>
+                <a class="  close  " data-dismiss="alert" >X</a>&nbsp;&nbsp;&nbsp;
                 Selecciona un  enlace de la seccion contenido para comenzar la lectura.
             </div>
         </div>

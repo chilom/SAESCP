@@ -15,7 +15,7 @@ $(document).ready(function () {
             success: function (data) {
                 $("#loader_c_s").fadeOut();
                 if (data == null) { // $('#' + lista).append               
-                    $('#links_contenido').append('<li class=" alert alert-warning text-center ">Sin contenido</li>');
+                    $('#links_contenido').append('<li class=" alert alert-warning text-center "><a class="  close  " data-dismiss="alert" >X</a> Sin contenido, <a href="curso_controller/">volver</a></li>');
                 } else {
                     $.each(data, function (i, value) {
                         $('#links_contenido').append('<li  class="link_ss col-md-12 " value=' + value.url + '  >' + value.nombre + '</li>');
@@ -24,7 +24,7 @@ $(document).ready(function () {
             },
             error: function (xhr) {
                 $("#loader_c_s").fadeOut();
-                $('#links_contenido').append('<li class="subtemas">No se pueden obtener subtemas,  falta algun parametro.</li>');
+                $('#links_contenido').append('<li class="subtemas">  No se pueden obtener subtemas,  falta algun parametro.</li>');
             }
         }); // ajax() 
     });// fin llenar contenido subsubtema
@@ -44,7 +44,7 @@ $(document).ready(function () {
             success: function (data) {
                 $("#loader_cc").fadeOut();
                 if (data == null) { // $('#' + lista).append               
-                    $('#links_contenido').append('<li data="' + value.id + '" class=" alert alert-warning text-center ">Sin contenido</li>');
+                    $('#links_contenido').append('<li  class=" alert alert-warning text-center "> <a class="  close  " data-dismiss="alert" >X</a>Sin contenido, <a href="curso_controller/">volver</a</li>');
                 } else {
                     $.each(data, function (i, value) {
                         $('#links_contenido').append('<li  class="link_ss "  value="' + value.url + '"  > <i class="glyphicon glyphicon-book"></i> &nbsp;' + value.nombre + '</li>');
@@ -53,7 +53,7 @@ $(document).ready(function () {
             },
             error: function (xhr) {
                 $("#loader_cc").fadeOut();
-                $('#links_contenido').append('<li class="">No se pueden obtener subtemas,  falta algun parametro.</li>');
+                $('#links_contenido').append('<li class="">  No se pueden obtener subtemas,  falta algun parametro.</li>');
             }
         }); // ajax() 
     });//fin llenar contenido subtema

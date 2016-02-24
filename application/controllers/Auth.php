@@ -83,7 +83,7 @@ class Auth extends CI_Controller {
             $datos['users_id'] = $this->session->userdata('user_id');
             // $datos['sesion_id'] = session_id();
             //$datos['inicio'] = date('Y-m-d H:i:s');
-            $datos['fin'] = date('Y-m-d H:i:s');
+      /*      $datos['fin'] = date('Y-m-d H:i:s');
             $this->sesion_model->registra_informacion_fin_sesion($datos);
             $datos_act['users_id'] = $this->session->userdata('user_id');
             $datos_act['curso_id'] = $this->session->userdata('curso_id');
@@ -92,7 +92,7 @@ class Auth extends CI_Controller {
             $datos_act['subsubtema_id'] = $this->session->userdata('subsubtema');
             $datos_act['actividad_id'] = $this->session->userdata('');
             $datos_act['evaluacion_id'] = $this->session->userdata('');
-            $this->sesion_model->registra_ultima_actividad($datos_act);
+            $this->sesion_model->registra_ultima_actividad($datos_act);*/
         }
 
         // log the user out
@@ -791,7 +791,7 @@ class Auth extends CI_Controller {
                 //  redirect('auth/muestra_pantalla_autenticacion', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
             }
         } else {
-            $this->session->set_flashdata('message', '<div class = "text-left  alert alert-success">'
+            $this->session->set_flashdata('message', '<div class = "text-  alert alert-success">'
                     . '<a class = "  close  " data-dismiss = "alert" >X</a>'
                     . '<i class = "glyphicon glyphicon-exclamation-sign" style = "transform:scale(1.5);"></i>&nbsp;
                     &nbsp;
@@ -864,9 +864,8 @@ class Auth extends CI_Controller {
         $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
         $title['title'] = "Estudiante";
         $this->data['header_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-        $this->data['header'] = $this->load->view('pagina/encabezado_pagina', '', true);
-        $usuario['usuario'] = $this->load->view('pagina/usuario', '', true);
-        $this->data['menu'] = $this->load->view('pagina/menu_estudiante', $usuario, true);
+        $menu['menu'] = $this->load->view('pagina/menu_estudiante','', true);
+        $this->data['header'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
         $this->data['mis_cursos'] = $this->lista_inscripcion_model->obtiene_mis_cursos($this->session->userdata('user_id'));
         $this->data['footer'] = $this->load->view('pagina/pie_pagina', '', true);
         //renderizacion de  la pagina autenticacion

@@ -141,7 +141,7 @@ $lang['forgot_password_submit_btn']              = 'Enviar';
 $lang['forgot_password_validation_email_label']  = 'Correo Electrónico';
 $lang['forgot_password_identity_label'] = 'usuario';
 $lang['forgot_password_email_identity_label']    = 'Email';
-$lang['forgot_password_identity_not_found']='Usuario no encontrado. No se puedo enviar el correo.';
+$lang['forgot_password_identity_not_found']='<div class="text-center">Usuario no encontrado. No se puedo enviar el correo.</div>';
 $lang['forgot_password_email_not_found']         = 'El correo electrónico no existe.';
 $lang['forgot_password_username_not_found']         = 'El usuario no esta registrado.';
 

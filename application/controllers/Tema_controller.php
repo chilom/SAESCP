@@ -36,9 +36,8 @@ class Tema_controller extends CI_Controller {
         $title['title'] = 'estudiante: temas';
         $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
         $data['encabezado_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-        $data['encabezado_pagina'] = $this->load->view('pagina/encabezado_pagina', '', true);
-        $usuario['usuario'] = $this->load->view('pagina/usuario', '', true);
-        $data['menu'] = $this->load->view('pagina/menu_estudiante', $usuario, true);
+        $menu['menu'] = $this->load->view('pagina/menu_estudiante', '', true);
+        $data['encabezado_pagina'] = $this->load->view('pagina/encabezado_pagina', $menu, true);       
         $tema = $this->tema_model->obtiene_nombre_tema($this->session->userdata('tema'));
         $data['tema'] = $tema->nombret;
         $data['subtemas'] = $this->subtema_model->obtiene_subtema($this->session->userdata('tema'));
@@ -56,9 +55,8 @@ class Tema_controller extends CI_Controller {
         $title['title'] = 'estudiante: subtemas';
         $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
         $data['encabezado_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-        $data['encabezado_pagina'] = $this->load->view('pagina/encabezado_pagina', '', true);
-        $usuario['usuario'] = $this->load->view('pagina/usuario', '', true);
-        $data['menu'] = $this->load->view('pagina/menu_estudiante', $usuario, true);
+                $menu['menu'] = $this->load->view('pagina/menu_estudiante', '', true);
+        $data['encabezado_pagina'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
         $subtema = $this->subtema_model->obtiene_nombre($this->session->userdata('subtema'));
         $data['subtema'] = $subtema->nombre;
         $data['subsubtemas'] = $this->subsubtema_model->obtiene_subsubtema($this->session->userdata('subtema'));
@@ -75,9 +73,8 @@ class Tema_controller extends CI_Controller {
         $title['title'] = 'estudiante: subsubtemas';
         $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
         $data['encabezado_html'] = $this->load->view('pagina/encabezado_html', $title, true);
-        $data['encabezado_pagina'] = $this->load->view('pagina/encabezado_pagina', '', true);
-        $usuario['usuario'] = $this->load->view('pagina/usuario', '', true);
-        $data['menu'] = $this->load->view('pagina/menu_estudiante', $usuario, true);
+                $menu['menu'] = $this->load->view('pagina/menu_estudiante','', true);
+        $data['encabezado_pagina'] = $this->load->view('pagina/encabezado_pagina', $menu, true);
         $subsubtema = $this->subsubtema_model->obtiene_nombre($this->session->userdata('subsubtema'));
         $data['id_ss'] = $this->session->userdata('subsubtema');
         $data['subsubtema'] = $subsubtema->nombre;

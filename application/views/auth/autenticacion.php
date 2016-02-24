@@ -19,8 +19,21 @@ echo $header;
             <?php echo form_open("auth/busca_usuario", array('class' => 'col-md-5', 'id' => 'form_autenticacion')); ?>
             <fieldset  class="">
                 <legend class="help-block">Datos requeridos</legend>
-                <?php echo form_input($identity); ?>    
-                <?php echo form_input($password); ?>
+
+                <div class="input-group" style="//background: rgba(0,113,185,.7);padding-bottom: 0%;">
+                    <span class="input-group-addon" id="basic-addon1" style="">
+                        <i class="glyphicon glyphicon-user" style=""></i>
+                    </span>
+                    <?php echo form_input($identity); ?>    
+                </div>    
+                <br />
+                <div class="input-group" style="//background: rgba(0,113,185,.7);padding-bottom: 0%;">
+                    <span class="input-group-addon" id="basic-addon1" style="">
+                        <i class="glyphicon glyphicon-lock" style=""></i>
+                    </span>
+                    <?php echo form_input($password); ?>
+                </div>   
+                <br />
                 <button type="submit" class="btn btn-primary col-md-12 " id="">
                     <span class="glyphicon glyphicon-log-in btn_" style=""></span> 
                     &nbsp;Iniciar sesión

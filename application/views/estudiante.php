@@ -17,16 +17,16 @@ echo $header;
                 <div id="mis_cursos" class="col-md-12">
                     <?php
                     if ($mis_cursos != null) {
-                        foreach ($mis_cursos as $curso) {
-                            ?>
-                            <a class="col-md-12 mis_cursos text-center " href="curso_controller/llena_temario/<?php echo $curso->curso_id; ?>">
-                                <?php echo $curso->nombre; ?>  
+                        foreach ($mis_cursos as $curso) {     ?> 
+                    
+                            <a class="col-md-12 mis_cursos text-center  " href="curso_controller/llena_temario/<?php echo $curso->curso_id; ?>">
+                                <i class="glyphicon glyphicon-link "></i>&nbsp;&nbsp;&nbsp;<?php echo $curso->nombre; ?>  
                             </a>
-                            <?php
-                        }
+                            <?php }
                     } else {
                         ?>
                         <div class="col-md-12 alert alert-warning" >
+                            <a class="  close  " data-dismiss="alert" >X</a>
                             <b>Sin informacion, pobablemente el maestro aun esta administrando los cursos.</b> 
                         </div>
                     <?php } ?>

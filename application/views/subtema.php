@@ -42,25 +42,25 @@ echo $encabezado_pagina;
                 <h5 class="head_t_cont" >Contenido</h5>
                 <div id="loader_cc" hidden="true">
                     <img src="<?php echo base_url() ?>assets/imagenes/ajax-loader.gif"> 
-                    <span class="help-block"> cargando...</span>
+                    <span class="help-block"> Cargando...</span>
                 </div>
                 <div id="links_contenido" class="">
 
                 </div>
                 <div style="">
                     <hr>
-                    <div class="btn btn-success" id="termine_leer" >
-                        <i class="glyphicon glyphicon-eye-open"></i>
-                        Termine la lectura</div> 
+                    <div class="btn btn-success col-md-12" id="termine_leer"  >
+                        <i class="glyphicon glyphicon-eye-open icono_btn" ></i>
+                        Termine la lectura
+                    </div> 
                     <hr>
-
-                    <button class="btn btn-primary botones_contenido" > 
+                    <button id="" class="btn btn-primary botones_contenido" > 
                         <i class="glyphicon glyphicon-file"></i>
-                        actividad</button>
+                        Actividad</button>
 
-                    <button class="btn btn-primary botones_contenido" >  
+                    <button id="" class="btn btn-primary botones_contenido" >  
                         <i class="glyphicon glyphicon-education"></i>
-                        evaluacion
+                        Evaluación
                     </button>
                 </div>
             </div>

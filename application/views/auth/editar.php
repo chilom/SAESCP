@@ -23,7 +23,8 @@ echo $header;
                     <?php echo form_input($email); ?>
                     <?php echo form_input($password); ?>
                     <?php echo form_input($password_confirm); ?>
-                    <div class="col-md-12">       <?php if ($this->ion_auth->is_admin()): ?>
+                    <div class="col-md-12">                               
+                        <?php if ($this->ion_auth->is_admin()): ?>
                             <h4 class="text-left">Rol de usuario:</h4>
                             <?php foreach ($groups as $group): ?>
                                 <div class="col-md-4">  
